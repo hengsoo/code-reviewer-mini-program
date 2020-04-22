@@ -3,7 +3,7 @@ const app = getApp()
 
 Page({
   data: {
-    user_menu : []
+    menu : []
   },
 
   onLoad: function() {
@@ -35,7 +35,7 @@ function getUserMenu(){
     data: {},
     success: res => {
       console.log(res)
-      // updateUserMenu(res.result.user_menu)
+      updateUserMenu(res.result.menu)
     },
     fail: err => {
       console.log('Get user menu FAILED: ', err)
@@ -43,10 +43,10 @@ function getUserMenu(){
   })
 }
 
-function updateUserMenu(new_user_menu){
-  if (new_user_menu){
+function updateUserMenu(new_menu){
+  if (new_menu){
     this.setData({
-      user_menu :  new_user_menu
+      menu :  new_menu
     })
   }
 }

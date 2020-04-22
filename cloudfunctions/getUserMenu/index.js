@@ -17,8 +17,10 @@ exports.main = async (event, context) => {
     menu = await db.collection('user-menus').doc(menu_id).get()
     console.log(`User menu found.`)
   }
+  // If menu is not found
   catch (error){
     console.log("User menu not found. Create New.")
+    // Add new entry
     await db.collection('user-menus').add({
       data:{
         _id : menu_id,
