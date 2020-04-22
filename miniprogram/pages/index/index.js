@@ -3,25 +3,51 @@ const app = getApp()
 
 Page({
   data: {
+    menu : []
   },
 
   onLoad: function() {
-    setOpenID();
+    this.setOpenID()
+    this.getUserMenu()
+  },
+  
+  setOpenID: function() {
+    // Call cloud funtion getOpenID
+    wx.cloud.callFunction({
+      name: 'getOpenID',
+      data: {},
+      success: res => {
+        console.log('user openid: ', res.result.openid)
+        app.globalData.openid = res.result.openid
+      },
+      fail: err => {
+        console.error('[CLOUD] [getOpenID] FAILED: ', err)
+      }
+    })
   },
 
-})
+  getUserMenu: function(){
+    // Call cloud funtion getOpenID
+    wx.cloud.callFunction({
+      name: 'getUserMenu',
+      data: {},
+      success: res => {
+        this.updateUserMenu(res.result.data.menu)
+        console.log("user menu updated")
+      },
+      fail: error => {
+        console.log('Get user menu FAILED: ', error)
+      }
+    })
+  },
 
-function setOpenID() {
-  // Call cloud funtion getOpenID
-  wx.cloud.callFunction({
-    name: 'getOpenID',
-    data: {},
-    success: res => {
-      console.log('[云函数] [getOpenID] user openid: ', res.result.openid)
-      app.globalData.openid = res.result.openid
-    },
-    fail: err => {
-      console.error('[云函数] [getOpenID] 调用失败', err)
+  updateUserMenu: function(new_menu){
+    console.log(new_menu)
+    if (new_menu){
+      this.setData({
+        menu :  new_menu
+      })
     }
-  })
-}
+  }
+
+})

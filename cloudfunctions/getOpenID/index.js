@@ -5,9 +5,8 @@ cloud.init({
 })
 
 exports.main = (event, context) => {
-  console.log(event)
-  console.log(context)
 
+  // Get openid function
   const wxContext = cloud.getWXContext()
 
   return {
