@@ -48,6 +48,50 @@ Page({
         menu :  new_menu
       })
     }
-  }
+  },
 
+  addFile: function(){
+    let input_file_content = ""
+    let input_file_name = ""
+
+    // Choose file
+    wx.chooseMessageFile({
+      count: 1,
+      success: res => {
+        input_file_name = res.tempFiles[0].name
+        // Read file 
+        wx.getFileSystemManager().readFile({
+          filePath: res.tempFiles[0].path,
+          encoding:'utf-8',
+
+          success: res => {
+            input_file_content = res
+            // Call cloud function addFile
+            wx.cloud.callFunction({
+              name: 'addFile',
+              data: {
+                file_name : input_file_name,
+                file_content: input_file_content
+              },
+              success: res => {
+                this.updateUserMenu(res.result.data.menu)
+                console.log("add file user menu updated")
+              },
+              fail: error => {
+                console.error('Cloud addFile failed: ', error)
+              }
+            })
+          },
+          // Read file failed
+          fali: error =>{
+            console.error("Read file failed: ", error)
+          }
+        })
+      },
+      // Choose file failed
+      fail: error =>{
+        console.error("Choose file failed:", error)
+      }
+    })
+  }
 })
