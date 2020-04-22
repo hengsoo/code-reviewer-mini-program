@@ -2,8 +2,8 @@
 <view class="container">
 
     <mp-cells title="文件列表" class="fill-width">
-        <mp-cell wx:for="{{menu}}" wx:key="{{item.file_id}}" link hover 
-        value="{{ item.file_name }}" footer="打开">
+        <mp-cell wx:for="{{menu}}" wx:key="file_id" link hover 
+        url="" value="{{ item.file_name }}" footer="打开">
             <image class="cell-icon" slot="icon" src="../../images/index/language-{{item.language}}.png"></image>
         </mp-cell>
     </mp-cells>
