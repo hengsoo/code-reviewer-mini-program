@@ -3,10 +3,12 @@ const app = getApp()
 
 Page({
   data: {
+    user_menu : []
   },
 
   onLoad: function() {
-    setOpenID();
+    setOpenID()
+    getUserMenu()
   },
 
 })
@@ -17,11 +19,34 @@ function setOpenID() {
     name: 'getOpenID',
     data: {},
     success: res => {
-      console.log('[云函数] [getOpenID] user openid: ', res.result.openid)
+      console.log('[CLOUD] [getOpenID] user openid: ', res.result.openid)
       app.globalData.openid = res.result.openid
     },
     fail: err => {
-      console.error('[云函数] [getOpenID] 调用失败', err)
+      console.error('[CLOUD] [getOpenID] FAILED: ', err)
     }
   })
+}
+
+function getUserMenu(){
+  // Call cloud funtion getOpenID
+  wx.cloud.callFunction({
+    name: 'getUserMenu',
+    data: {},
+    success: res => {
+      console.log(res)
+      // updateUserMenu(res.result.user_menu)
+    },
+    fail: err => {
+      console.log('Get user menu FAILED: ', err)
+    }
+  })
+}
+
+function updateUserMenu(new_user_menu){
+  if (new_user_menu){
+    this.setData({
+      user_menu :  new_user_menu
+    })
+  }
 }
