@@ -8,4 +8,6 @@
         </mp-cell>
     </mp-cells>
 
+    <button class="add-button" hover-class="add-button-hover" bindtap="setPlain">+</button>
+
 </view>
