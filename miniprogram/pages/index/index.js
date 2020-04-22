@@ -65,7 +65,8 @@ Page({
           encoding:'utf-8',
 
           success: res => {
-            input_file_content = res
+            console.log(res)
+            input_file_content = res.data
             // Call cloud function addFile
             wx.cloud.callFunction({
               name: 'addFile',
@@ -74,8 +75,9 @@ Page({
                 file_content: input_file_content
               },
               success: res => {
+                console.log(res)
                 this.updateUserMenu(res.result.data.menu)
-                console.log("add file user menu updated")
+                console.log("Add file user menu updated")
               },
               fail: error => {
                 console.error('Cloud addFile failed: ', error)
