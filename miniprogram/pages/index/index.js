@@ -95,5 +95,13 @@ Page({
         console.error("Choose file failed:", error)
       }
     })
+  },
+  displayCode: function(){
+    // var model = JSON.stringify(data.menu[0].file_id);
+    console.log(this.data.menu);
+    wx.navigateTo({
+      url: '../code-view/code-view',
+      // todo 传入文件序号，在另一端读取文件序号，再从数据库中得到code
+    })
   }
 })
