@@ -15,18 +15,24 @@ Page({
     console.log('to cloud');
     console.log(this.data.file_id);
     wx.cloud.callFunction({
-      name: 'getCode',
+      name: 'getProgramFile',
       data:{
         file_id: this.data.file_id,
       },
       success: res => {
-        console.log(res)
+        console.log(res.result)
+        var new_code = res.result.data.code;
+        let len = new_code.length
+        /*for (let j = 0; j < len; j++) {
+          new_code[j] = new_code[j].replace(/\s+/g,"&npsp;");
+        }*/
         this.setData({
-          code: res.result
+          code: new_code
         })
+        console.log(this.data.code)
       },
       fail: error =>{
-        console.error('Cloud getCode failed')
+        console.error('Cloud getProgramFile failed')
       }
     })
   }

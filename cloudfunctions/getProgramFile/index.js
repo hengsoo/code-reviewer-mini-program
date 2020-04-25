@@ -9,10 +9,8 @@ cloud.init({
 exports.main = async (event, context) => {
   const user_openid = cloud.getWXContext()
   const db = cloud.database()
-  const code = await db.collection('program-files')
-  .where({
-    _id: event.file_id
-  }).code
-
+  let code = await db.collection('program-files').doc(event.file_id).get()
+  
+  console.log(code)
   return code
 }
