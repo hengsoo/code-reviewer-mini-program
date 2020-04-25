@@ -96,12 +96,15 @@ Page({
       }
     })
   },
-  displayCode: function(){
+  /*displayCode: function(e){
     // var model = JSON.stringify(data.menu[0].file_id);
-    console.log(this.data.menu);
+    var id = e.currentTarget.dataset.file_name;
+    console.log(this.data.menu[0].file_id);
+    console.log(e.target.dataset);
+    console.log(e.currentTarget.dataset);
     wx.navigateTo({
-      url: '../code-view/code-view',
+      url: '../code-view/code-view?file_id={{this.data.menu[id].file_id}}',
       // todo 传入文件序号，在另一端读取文件序号，再从数据库中得到code
     })
-  }
+  }*/
 })

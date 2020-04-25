@@ -6,14 +6,14 @@ Page({
     code: []
   },
   onLoad: function(options) {
-    console.log('called');
     this.setData({
       file_id: options.file_id
-    })
-    console.log(this.data.file_id)
-    this.getCode()
+    });
+    this.getCode();
   },
   getCode: function() {
+    console.log('to cloud');
+    console.log(this.data.file_id);
     wx.cloud.callFunction({
       name: 'getCode',
       data:{
@@ -21,9 +21,12 @@ Page({
       },
       success: res => {
         console.log(res)
-        /*this.setData({
+        this.setData({
           code: res.result
-        })*/
+        })
+      },
+      fail: error =>{
+        console.error('Cloud getCode failed')
       }
     })
   }

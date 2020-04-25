@@ -11,12 +11,8 @@ exports.main = async (event, context) => {
   const db = cloud.database()
   const code = await db.collection('program-files')
   .where({
-    _openid: user_openid,
     _id: event.file_id
-  })
-  .code
+  }).code
 
-  return {
-    code
-  }
+  return code
 }
