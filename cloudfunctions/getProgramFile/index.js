@@ -5,12 +5,19 @@ cloud.init({
   env: cloud.DYNAMIC_CURRENT_ENV
 })
 
-// 云函数入口函数
 exports.main = async (event, context) => {
   const user_openid = cloud.getWXContext()
   const db = cloud.database()
-  let code = await db.collection('program-files').doc(event.file_id).get()
-  
-  console.log(code)
-  return code
+  const file_id = event.file_id
+
+  let program_file = {}
+  console.log("Get file: ", file_idd)
+  try{
+    program_file = await db.collection('program-files').doc(file_id).get()
+  }
+  catch( error ){
+    console.error("Get file failed: ", error)
+  }
+
+  return program_file
 }

@@ -3,37 +3,39 @@ const app = getApp()
 Page({
   data: {
     file_id: null,
-    code: []
+    code: [],
+    reviews: []
   },
+
   onLoad: function(options) {
     this.setData({
       file_id: options.file_id
     });
-    this.getCode();
+    this.setCodeAndReviews();
   },
-  getCode: function() {
-    console.log('to cloud');
+
+  setCodeAndReviews: function() {
+    console.log('Getting program file: ');
     console.log(this.data.file_id);
+
     wx.cloud.callFunction({
       name: 'getProgramFile',
       data:{
         file_id: this.data.file_id,
       },
+
       success: res => {
-        console.log(res.result)
-        var new_code = res.result.data.code;
-        let len = new_code.length
-        /*for (let j = 0; j < len; j++) {
-          new_code[j] = new_code[j].replace(/\s+/g,"&npsp;");
-        }*/
+        console.log(res)
+        var program_file_code = res.result.data.code;
         this.setData({
-          code: new_code
+          code: program_file_code
         })
-        console.log(this.data.code)
       },
+
       fail: error =>{
-        console.error('Cloud getProgramFile failed')
+        console.error('Cloud getProgramFile failed', error)
       }
     })
+    
   }
 })
