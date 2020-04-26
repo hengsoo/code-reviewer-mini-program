@@ -1,1 +1,42 @@
-@import"../../components/prism.wxss"
+@import"../../components/prism.wxss";
+
+page {
+  height: 100%;
+  background: #282923;
+  color: white;
+}
+
+view.code-container {
+  overflow-x: auto;
+  height: 100%;
+  margin: 15rpx 25rpx 0 0;
+}
+
+table {
+  display: flex;
+  flex-direction: column;
+}
+
+tr {
+  display: flex;
+  flex-direction: column;
+}
+
+.head-col {
+  position: absolute;
+  left: 0;
+  top: auto;
+  width: 12%;
+  border-top-width: 1px;
+  /*only relevant for first row*/
+  margin-top: -1px;
+  /* background: #282923; */
+  text-align: center;
+  color: #8c8e8a;
+  background: #282923;
+  /*compensate for top border*/
+}
+
+.code {
+  margin:0 0 0 13%;
+}
