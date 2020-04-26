@@ -1,7 +1,7 @@
 <!--code-view.wxml-->
 <view>
   <block>
-    <view wx:for="{{code}}">
+    <view wx:for="{{code}}" wx:key="index">
       <rich-text nodes="{{item}}"></rich-text>
     </view>
   </block>

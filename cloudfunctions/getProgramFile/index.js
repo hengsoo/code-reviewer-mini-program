@@ -11,7 +11,7 @@ exports.main = async (event, context) => {
   const file_id = event.file_id
 
   let program_file = {}
-  console.log("Get file: ", file_idd)
+  console.log("Get file: ", file_id)
   try{
     program_file = await db.collection('program-files').doc(file_id).get()
   }
