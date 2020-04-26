@@ -7,8 +7,11 @@ Page({
   },
 
   onLoad: function() {
-    this.setOpenID()
-    this.getUserMenu()
+    wx.redirectTo({
+      url: "../code-view/code-view?file_id=ex1_基本运算2.cpp_1587886160055_olBU54272sRsXbkwnGBzS2wSn4k4"
+    })
+    // this.setOpenID()
+    // this.getUserMenu()
   },
   
   setOpenID: function() {
