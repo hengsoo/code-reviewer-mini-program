@@ -7,8 +7,7 @@ page {
   justify-content: flex-start;
 }
 
-view.weui-cell.weui-cell_access.weui-cell_wxss
-:last-of-type{
+mp-cell:first-child>view{
  border-bottom: 1rpx solid rgba(0,0,0,0.1);
 }
 
