@@ -59,6 +59,7 @@ Page({
     // Choose file
     wx.chooseMessageFile({
       count: 1,
+      type: "file",
       success: res => {
         input_file_name = res.tempFiles[0].name
         // Read file 
