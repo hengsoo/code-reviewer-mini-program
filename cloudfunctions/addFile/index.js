@@ -25,12 +25,11 @@ exports.main = async (event, context) => {
       file_highlighted_content.push(" ")
     }
     else{
-      
       // Highlight line
       line = prism.highlight(line, grammar, language)
-      // Repalce 4 spaces and tab
+      // Repalce 4 spaces and tab with nbsp
       line = line.replace(/     |	/g,"&nbsp;&nbsp;&nbsp;&nbsp;")
-
+      // Push line
       file_highlighted_content.push(line)
     }
   })

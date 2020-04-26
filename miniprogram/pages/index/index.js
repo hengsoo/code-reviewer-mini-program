@@ -42,7 +42,9 @@ Page({
   },
 
   updateUserMenu: function(new_menu){
-    console.log(new_menu)
+    // Set latest file at top
+    new_menu = new_menu.reverse()
+
     if (new_menu){
       this.setData({
         menu :  new_menu

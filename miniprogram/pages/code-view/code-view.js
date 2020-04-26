@@ -23,19 +23,24 @@ Page({
       data:{
         file_id: this.data.file_id,
       },
-
+      
+      // Get programFile sucess
       success: res => {
         console.log(res)
-        var program_file_code = res.result.data.code;
+        const program_file_code = res.result.data.code;
+        const program_file_reviews = res.result.data.reviews;
+
         this.setData({
-          code: program_file_code
+          code: program_file_code,
+          reviews: program_file_reviews
         })
       },
 
+      // Get programFile failed
       fail: error =>{
         console.error('Cloud getProgramFile failed', error)
       }
-    })
-    
+    }) 
   }
+
 })
