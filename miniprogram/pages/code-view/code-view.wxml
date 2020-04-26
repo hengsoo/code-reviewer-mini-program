@@ -1,0 +1,11 @@
+<!--code-view.wxml-->
+<view class="code-container">
+	<table>
+
+		<tr wx:for="{{code}}" wx:key="index">
+			<th class="head-col">{{index + 1}}</th>
+			<rich-text nodes="{{item}}" space="nbsp" class="code"></rich-text>
+		</tr>
+		
+	</table>
+</view>

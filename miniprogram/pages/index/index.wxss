@@ -7,29 +7,33 @@ page {
   justify-content: flex-start;
 }
 
+mp-cell:first-child>view{
+ border-bottom: 1rpx solid rgba(0,0,0,0.1);
+}
+
 .cell-icon{
   margin-right: 16px;
   vertical-align: middle;
-  width:40px;
-  height: 40px !important;
+  width: 100rpx !important;  /* aprox 50px */
+  height: 100rpx !important; /* aprox 50px */
 }
 
 .add-button{
   position: fixed;
-  bottom: 30px;
-  right: 25px;
+  bottom: 60rpx;
+  right: 50rpx;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 60px !important;
-  height: 60px !important;
-  border-radius: 30px;
+  width: 120rpx !important;
+  height: 120rpx !important;
+  border-radius: 60rpx;
   background: #673bb7;
   color: white;
-  font-size: 40px;
+  font-size: 80rpx;
   line-height: 0;
-  padding: 0px 0px 5px 0px !important;
+  padding: 0 0 10rpx 0 !important;
 }
 
 .add-button-hover{

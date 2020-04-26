@@ -3,7 +3,7 @@
 
     <mp-cells title="文件列表" class="fill-width">
         <mp-cell wx:for="{{menu}}" wx:key="file_id" link hover 
-        url="" value="{{ item.file_name }}" footer="打开">
+        url="../code-view/code-view?file_id={{item.file_id}}" value="{{ item.file_name }}" footer="打开">
             <image class="cell-icon" slot="icon" src="../../images/index/language-{{item.language}}.png"></image>
         </mp-cell>
     </mp-cells>
