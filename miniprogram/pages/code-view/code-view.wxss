@@ -6,8 +6,8 @@ page {
   color: white;
 }
 
-view.code-container {
-  overflow-x: auto;
+.code-container {
+  overflow-x: scroll;
   height: 100%;
   margin: 15rpx 25rpx 0 0;
 }
@@ -18,15 +18,15 @@ table {
 }
 
 tr {
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
+  flex-direction: row;
 }
 
 .head-col {
-  position: absolute;
+  position: sticky;
   left: 0;
   top: auto;
-  width: 12%;
+  min-width: 90rpx;
   border-top-width: 1px;
   /*only relevant for first row*/
   margin-top: -1px;
@@ -38,5 +38,5 @@ tr {
 }
 
 .code {
-  margin:0 0 0 13%;
+  white-space: nowrap;
 }
