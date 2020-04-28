@@ -26,7 +26,14 @@ Page({
       
       // Get programFile sucess
       success: res => {
-        console.log(res)
+
+        if( Object.keys(res.result).length === 0 ){
+          console.log("Empty result")
+          wx.redirectTo({
+            url: '../index/index',
+          })
+        }
+
         const program_file_code = res.result.data.code;
         const program_file_reviews = res.result.data.reviews;
 
