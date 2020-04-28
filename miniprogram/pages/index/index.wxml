@@ -1,6 +1,6 @@
 <!--index.wxml-->
-<!-- <import src="../../components/layout/header.wxml"/> -->
-
+<!-- header -->
+<include src="../../components/layout/header/header.wxml"/>
 
 <view class="container">
 
@@ -14,5 +14,3 @@
     <button class="add-button" hover-class="add-button-hover" bindtap="addFile">+</button>
 
 </view>
-
-<authorize-user-info/>

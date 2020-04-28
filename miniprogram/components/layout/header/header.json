@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "authorize-user-info" : "../../authorize-user-info/authorize-user-info"
+  }
 }
