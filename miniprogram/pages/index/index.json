@@ -1,6 +1,8 @@
 {
   "usingComponents": {
     "mp-cells": "../../components/weui/cells/cells",
-    "mp-cell": "../../components/weui/cell/cell"
+    "mp-cell": "../../components/weui/cell/cell",
+    "mp-halfScreenDialog": "../../components/weui/half-screen-dialog/half-screen-dialog",
+    "authorize-user-info" : "../../components/authorize-user-info/authorize-user-info"
   }
 }

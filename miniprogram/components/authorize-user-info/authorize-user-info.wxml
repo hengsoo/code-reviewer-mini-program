@@ -1,0 +1,34 @@
+<view class="{{show ? 'weui-show' :'weui-hidden'}}"> 
+  <view class="weui-mask init" bindtap="close" data-type="tap"></view>
+  <view class="weui-half-screen-dialog">
+    <view class="weui-half-screen-dialog__hd">
+      <view class="weui-half-screen-dialog__hd__side" bindtap="close" data-type="close">
+        <view class="weui-icon-btn weui-icon-btn_close">关闭</view>
+      </view>
+      <view class="weui-half-screen-dialog__hd__main">
+        <block>
+          <text class="weui-half-screen-dialog__title">申请获得</text>
+          <text class="weui-half-screen-dialog__subtitle">获得你的公开信息</text>
+        </block>
+
+      </view>
+      <view class="weui-half-screen-dialog__hd__side">
+        <!-- Custom style  -->
+        <!-- <view class="weui-icon-btn weui-icon-btn_more">更多</view> -->
+      </view>
+    </view>
+    <view class="weui-half-screen-dialog__bd">
+      <block>
+        <view class="weui-half-screen-dialog__tips">昵称、头像、地区及性别</view>
+      </block>
+    </view>
+    <view class="weui-half-screen-dialog__ft">
+
+    <!-- Custom getUserInfo button -->
+      <block>
+        <button type="primary" class="weui-btn" open-type="getUserInfo">同意</button>
+      </block> 
+
+    </view>
+  </view>
+</view>

@@ -7,23 +7,7 @@ Page({
   },
 
   onLoad: function() {
-    this.setOpenID()
     this.getUserMenu()
-  },
-  
-  setOpenID: function() {
-    // Call cloud funtion getOpenID
-    wx.cloud.callFunction({
-      name: 'getOpenID',
-      data: {},
-      success: res => {
-        console.log('user openid: ', res.result.openid)
-        app.globalData.openid = res.result.openid
-      },
-      fail: err => {
-        console.error('[CLOUD] [getOpenID] FAILED: ', err)
-      }
-    })
   },
 
   getUserMenu: function(){

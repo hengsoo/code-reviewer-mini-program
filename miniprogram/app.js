@@ -11,6 +11,26 @@ App({
       })
     }
 
-    this.globalData = {}
+    this.globalData = {
+      request_authorize_user_info_dialog : false
+    }
+
+    this.setOpenID()
+  },
+
+  setOpenID: function() {
+    // Call cloud funtion getOpenID
+    wx.cloud.callFunction({
+      name: 'getOpenID',
+      data: {},
+      success: res => {
+        console.log('user openid: ', res.result.openid)
+        this.globalData.openid = res.result.openid
+      },
+      fail: err => {
+        console.error('[CLOUD] [getOpenID] FAILED: ', err)
+      }
+     })
   }
+
 })
