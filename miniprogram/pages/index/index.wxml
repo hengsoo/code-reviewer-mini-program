@@ -15,4 +15,4 @@
 
 </view>
 
-<authorize-user-info></authorize-user-info>
+<authorize-user-info/>

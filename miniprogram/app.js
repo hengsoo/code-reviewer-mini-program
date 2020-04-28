@@ -12,7 +12,8 @@ App({
     }
 
     this.globalData = {
-      request_authorize_user_info_dialog : false
+      user_info: null,
+      openid: null
     }
 
     this.setOpenID()

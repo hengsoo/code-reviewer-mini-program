@@ -1,13 +1,14 @@
+const app = getApp()
+
 Component({
-  data:{
-    show:false
+  options: {
+    addGlobalClass: true
   },
 
   lifetimes: {
     attached: function() {
       console.log("banana")
-      // const app = getApp()
-      if (1){
+      if (!app.globalData.user_info){
         this.setData({
           show: true
         })
@@ -38,10 +39,9 @@ Component({
           },
           fail: err => {
             console.error('[CLOUD] [getUserInfo] FAILED: ', err)
-            // app.globalData.request_authorize_user_info_dialog = true
-            // if ( !app.globalData.user_info && app.globalData.request_authorize_user_info_dialog == false ){
-            //   this.setUserInfo()
-            // }
+            this.setData({
+              show: true
+            })
           }
         })
       }
