@@ -159,12 +159,6 @@ Component({
         this.setData({
           show: false
         }); // 关闭弹窗回调事件
-        
-        // Custom authorize getUserInfo Logic
-        if(this.data.id == 'request-user-info-authorization'){
-          const app = getApp()
-          app.globalData.request_authorize_user_info_dialog = false
-        }
 
         this.triggerEvent('close');
       }
