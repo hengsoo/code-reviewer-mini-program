@@ -1,4 +1,7 @@
 <!--index.wxml-->
+<!-- header -->
+<include src="../../components/layout/header/header.wxml"/>
+
 <view class="container">
 
     <mp-cells title="文件列表" class="fill-width">

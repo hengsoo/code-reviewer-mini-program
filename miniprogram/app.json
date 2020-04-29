@@ -10,6 +10,9 @@
     "navigationBarTitleText": "代码阅读器",
     "navigationBarTextStyle": "white"
   },
+  "usingComponents":{
+    "authorize-user-info" : "./components/authorize-user-info/authorize-user-info"
+  },
   "sitemapLocation": "sitemap.json",
   "style": "v2"
 }

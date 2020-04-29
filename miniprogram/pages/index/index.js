@@ -7,27 +7,14 @@ Page({
   },
 
   onLoad: function() {
+
     this.setOpenID()
     wx.redirectTo({
       url: '../code-view/code-view?file_id=ex2_抢劫啦.cpp_1587907657008_olBU54272sRsXbkwnGBzS2wSn4k4',
     })
 
     // this.getUserMenu()
-  },
-  
-  setOpenID: function() {
-    // Call cloud funtion getOpenID
-    wx.cloud.callFunction({
-      name: 'getOpenID',
-      data: {},
-      success: res => {
-        console.log('user openid: ', res.result.openid)
-        app.globalData.openid = res.result.openid
-      },
-      fail: err => {
-        console.error('[CLOUD] [getOpenID] FAILED: ', err)
-      }
-    })
+
   },
 
   getUserMenu: function(){
