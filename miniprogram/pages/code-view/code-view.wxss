@@ -40,3 +40,48 @@ tr {
 .code {
   white-space: nowrap;
 }
+
+.review {
+  /* width: 100%;
+  max-width: 150%; */
+  margin:  10rpx 0;
+  /* padding: 5rpx 3% 5rpx 3%; */
+}
+
+.review-content {
+  border-radius: 6% !important;
+  border-top-width: 2px;
+  border-top-style: solid;
+  padding: 20rpx 40rpx;
+}
+
+.content{
+  white-space: nowrap;
+}
+
+.review-comment {
+  border-top-color:#dadad9;
+  background-color: rgba(42, 44, 65, 0.6);
+}
+
+.review-advice {
+  border-top-color:#5bc3eb;
+}
+
+.review-warning {
+  border-top-color:#f06449;
+}
+
+.review-info {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  color: #f7f8f7;
+}
+
+image.review-info-avatar{
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 50%;
+  margin: 10rpx 20rpx 10rpx 10rpx;
+}

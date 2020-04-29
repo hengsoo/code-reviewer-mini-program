@@ -5,20 +5,37 @@
 <view class="code-container">
 	<table>
 		<block  wx:for="{{code}}" wx:key="index">
+		
 			<!-- Code -->
 			<tr>
 				<th class="head-col">{{index + 1}}</th>
-				<rich-text nodes="{{item}}" space="nbsp" class="code"></rich-text>
+				<rich-text  id="{{ index + 1 }}" nodes="{{item}}" space="nbsp" class="code" />
 			</tr>
+
 			<!-- Reviews -->
-			<block wx:if="{{ reviews[index+1] }}" >
-				<block wx:for="{{ reviews[index+1] }}"  wx:for-item="review">
+			<block wx:if="{{ reviews[index+1] }}">
+				<block wx:for="{{ reviews[index+1] }}"  
+				wx:for-item="review"  wx:for-index="review_index" wx:key="review_index">
+
 					<tr>
+
 						<th class="head-col"/>
-						<rich-text nodes="{{review.content}}" space="nbsp" class="code"></rich-text>
+
+						<view class="review">
+							<view class="review-info">
+								<image class="review-info-avatar" src="{{ review.author_avatar_url }}"></image>
+								<text>{{ review.author_name }}</text>
+							</view>
+							<view class="review-content review-{{ review.type }}">
+								<rich-text nodes="{{review.content}}" space="nbsp" class="content"/>
+							</view>
+						</view>
+
 					</tr>
+
 				</block>
 			</block>
+
 		</block>
 	</table>
 </view>

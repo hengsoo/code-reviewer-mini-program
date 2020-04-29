@@ -4,13 +4,18 @@ Page({
   data: {
     file_id: null,
     code: [],
-    reviews: []
+    reviews: [],
+    username: "",
+    user_avatar_url: ""
   },
 
   onLoad: function(options) {
     this.setData({
-      file_id: options.file_id
+      file_id: options.file_id,
+      username: app.globalData.user_info.nickName,
+      user_avatar_url: app.globalData.user_info.avatarUrl
     });
+
     this.setCodeAndReviews();
   },
 
