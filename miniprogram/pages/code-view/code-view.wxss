@@ -42,10 +42,7 @@ tr {
 }
 
 .review {
-  /* width: 100%;
-  max-width: 150%; */
   margin:  10rpx 0;
-  /* padding: 5rpx 3% 5rpx 3%; */
 }
 
 .review-content {
@@ -66,10 +63,12 @@ tr {
 
 .review-advice {
   border-top-color:#5bc3eb;
+  background-color: rgba(43, 64, 64, 0.6);
 }
 
 .review-warning {
   border-top-color:#f06449;
+  background-color: rgba(100, 17, 63, 0.6);
 }
 
 .review-info {
