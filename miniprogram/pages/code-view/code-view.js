@@ -14,7 +14,7 @@ Page({
       file_id: options.file_id
     });
 
-    this.setCodeAndReviews();
+    this.displayCodeAndReviews();
   },
 
   onShow: function(){
@@ -26,7 +26,7 @@ Page({
     }
   },
 
-  setCodeAndReviews: function() {
+  displayCodeAndReviews: function() {
     console.log('Getting program file: ');
     console.log(this.data.file_id);
 
@@ -54,8 +54,6 @@ Page({
           reviews: program_file_reviews
         })
 
-        // console.log(this.data.reviews)
-        // console.log(this.data.)
       },
 
       // Get programFile failed
