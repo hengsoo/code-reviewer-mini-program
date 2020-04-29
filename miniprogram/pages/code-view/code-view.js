@@ -11,12 +11,19 @@ Page({
 
   onLoad: function(options) {
     this.setData({
-      file_id: options.file_id,
-      username: app.globalData.user_info.nickName,
-      user_avatar_url: app.globalData.user_info.avatarUrl
+      file_id: options.file_id
     });
 
     this.setCodeAndReviews();
+  },
+
+  onShow: function(){
+    if (app.globalData.user_info != null){
+      this.setData({
+        username: app.globalData.user_info.nickName,
+        user_avatar_url: app.globalData.user_info.avatarUrl
+      });
+    }
   },
 
   setCodeAndReviews: function() {
