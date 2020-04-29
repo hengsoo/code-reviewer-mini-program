@@ -41,6 +41,9 @@ Page({
           code: program_file_code,
           reviews: program_file_reviews
         })
+
+        // console.log(this.data.reviews)
+        // console.log(this.data.)
       },
 
       // Get programFile failed

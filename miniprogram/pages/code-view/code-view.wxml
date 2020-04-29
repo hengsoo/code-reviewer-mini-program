@@ -4,9 +4,21 @@
 
 <view class="code-container">
 	<table>
-		<tr wx:for="{{code}}" wx:key="index">
-			<th class="head-col">{{index + 1}}</th>
-			<rich-text nodes="{{item}}" space="nbsp" class="code"></rich-text>
-		</tr>
+		<block  wx:for="{{code}}" wx:key="index">
+			<!-- Code -->
+			<tr>
+				<th class="head-col">{{index + 1}}</th>
+				<rich-text nodes="{{item}}" space="nbsp" class="code"></rich-text>
+			</tr>
+			<!-- Reviews -->
+			<block wx:if="{{ reviews[index+1] }}" >
+				<block wx:for="{{ reviews[index+1] }}"  wx:for-item="review">
+					<tr>
+						<th class="head-col"/>
+						<rich-text nodes="{{review.content}}" space="nbsp" class="code"></rich-text>
+					</tr>
+				</block>
+			</block>
+		</block>
 	</table>
 </view>
