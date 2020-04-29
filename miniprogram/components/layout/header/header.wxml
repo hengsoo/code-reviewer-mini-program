@@ -1,0 +1,4 @@
+<!--  header.wxml -->
+
+<!-- getUserInfo authorization -->
+<authorize-user-info/>
