@@ -7,9 +7,10 @@
 		<block  wx:for="{{code}}" wx:key="index">
 		
 			<!-- Code -->
-			<tr>
+			<tr id="{{ index + 1 }}" bindlongpress="launchReviewInput">
 				<th class="head-col">{{index + 1}}</th>
-				<rich-text  id="{{ index + 1 }}" nodes="{{item}}" space="nbsp" class="code" />
+				<rich-text  
+				 nodes="{{item}}" space="nbsp" class="code" />
 			</tr>
 
 			<!-- Reviews -->
@@ -39,3 +40,5 @@
 		</block>
 	</table>
 </view>
+
+<review-input show="{{true}}"/>

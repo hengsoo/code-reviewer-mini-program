@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "review-input" : "../../components/review-input/review-input"
+  }
 }

@@ -61,6 +61,10 @@ Page({
         console.error('Cloud getProgramFile failed', error)
       }
     }) 
-  }
+  },
 
+  launchReviewInput(event){
+    const line_number = event.currentTarget.id
+    console.log("Long pressed line ", line_number)
+  }
 })
