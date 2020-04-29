@@ -7,8 +7,6 @@ Page({
   },
 
   onLoad: function() {
-
-    this.setOpenID()
     wx.redirectTo({
       url: '../code-view/code-view?file_id=ex2_抢劫啦.cpp_1587907657008_olBU54272sRsXbkwnGBzS2wSn4k4',
     })
