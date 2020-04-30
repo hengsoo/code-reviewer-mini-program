@@ -3,7 +3,9 @@ const app = getApp()
 
 Page({
   data: {
-    menu : []
+    menu : [],
+    show_more_action: false,
+    currentIndex: 0,
   },
 
   onLoad: function() {
@@ -12,7 +14,6 @@ Page({
     })*/
 
     this.getUserMenu()
-
   },
 
   getUserMenu: function(){
@@ -40,8 +41,38 @@ Page({
       })
     }
   },
-  moreAction: function(){
-    console.log("moreAction called")
+  moreAction: function(e){
+    this.setData({
+      show_more_action: true,
+      currentIndex: e.currentTarget.dataset.operation,
+    })
+  },
+  cancelActionSheet: function(){
+    this.setData({
+      show_more_action: false,
+    })
+  },
+  share: function(){
+
+  },
+  reName: function(){
+
+  },
+  delete: function(){
+    console.log(this.data.menu)
+    wx.cloud.callFunction({
+      name: 'deleteFile',
+      data:{
+        file_id: this.data.menu[this.data.currentIndex].file_id,
+      },
+      success: res => {
+        console.log(res);
+        this.getUserMenu();
+      },
+      fail: error =>{
+        console.log('Cloud deleteFile failed', error)
+      },
+    })
   },
   addFile: function(){
     let input_file_content = ""

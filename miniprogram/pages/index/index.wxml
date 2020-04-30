@@ -8,13 +8,30 @@
         <mp-cell wx:for="{{menu}}" wx:key="file_id" link hover 
         url="../code-view/code-view?file_id={{item.file_id}}" value="{{ item.file_name }}">
             <image class="cell-icon" slot="icon" src="../../images/index/language-{{item.language}}.png"></image>
+            
         </mp-cell>
         
-        <view class="more-area" data-type="create" data-index="{{index}}" bindtap="moreAction" hover-stop-propagation>
+        <view wx:for="{{menu}}" wx:key="file_id" class="more-area" bindtap="moreAction" data-operation="{{index}}" hover-stop-propagation>
                 <image src="/images/index/icon_more.png" mode="widthFix" class="icon-more"></image>
         </view>
     </mp-cells>
-
     <button class="add-button" hover-class="add-button-hover" bindtap="addFile">+</button>
+
+    <view wx:if="{{show_more_action}}" class="fadeIn" bindtap="cancelActionSheet">
+        <view class="weui-mask"></view>
+        <view class="weui-actionsheet weui-actionsheet_toggle">
+            <view class="weui-actionsheet__title">
+                <view class="weui-actionsheet__title-text">请选择操作</view>
+            </view>
+            <view class="weui-actionsheet__menu">
+                <view class="weui-actionsheet__cell" bindtap="share">分享</view>
+                <view class="weui-actionsheet__cell" bindtap="reName">重命名</view>
+                <view class="weui-actionsheet__cell weui-actionsheet__cell_warn" bindtap="delete">删除</view>
+            </view>
+            <view class="weui-actionsheet__action">
+                <view class="weui-actionsheet__cell">取消</view>
+            </view>
+        </view>
+    </view>
 
 </view>
