@@ -77,7 +77,7 @@ review-type-button.active{
 }
 
 .review-input{
-  color: white;
+  color: black;
   width: auto;
   height: 100px;
   padding: 15rpx;
