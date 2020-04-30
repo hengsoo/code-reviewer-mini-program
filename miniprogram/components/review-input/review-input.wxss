@@ -80,9 +80,55 @@ review-type-button.active{
   color: black;
   width: auto;
   height: 100px;
-  margin-top: 25rpx;
   padding: 15rpx;
-  border: 1px solid rgba(42, 44, 65, 0.6);
-  border-radius: 3%;
-  
+  border: 1px solid #282923;
+  border-radius: 0 0 3% 3%;
+}
+
+.review-input.comment{
+  border-color: #989aa6;
+}
+.review-input.advice{
+  border-color: #5bc3eb;
+}
+.review-input.warning{
+  border-color: #fa4949;
+}
+
+.input-assist {
+  width: auto;
+  margin-top: 10rpx;
+  background: rgba(42, 44, 65, 0.6);
+  padding: 5rpx;
+  border-radius: 3% 3% 0 0;
+}
+
+.input-assist.comment{
+  background: #989aa6;
+}
+.input-assist.advice{
+  background: #5bc3eb;
+}
+.input-assist.warning{
+  background: #fa4949;
+}
+
+.input-assist-button {
+  width: 70rpx;
+  min-width: 70rpx;
+  max-width: 70rpx;
+  height: 40rpx !important;
+  min-height: 40rpx !important;
+  max-height: 40rpx !important;
+  color:white;
+  font-size: small;
+  padding: 5rpx;
+  margin: 0;
+  line-height: 1;
+}
+
+.input-assist-button-hover{
+  width: 80rpx;
+  height: 50rpx !important;
+  background: rgba(87, 87, 89, 0.6);
 }

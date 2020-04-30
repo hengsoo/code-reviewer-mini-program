@@ -71,7 +71,7 @@ Component({
     typeButtonTap(event){
       const type = event.currentTarget.dataset.type
       console.log(type)
-      let new_type = null
+      let new_type = 'comment'
       if (type != this.data.review_type){
         new_type = type
       }
@@ -81,12 +81,12 @@ Component({
     },
 
     assistButtonTap(event) {
-      const assist_input = event.currentTarget.dataset.assist-input
-      const current_content_length = this.data.review_content.length()
-      const assist_input_length = assist_input.length()
-      const new_review_content = current_content_length + assist_input
-      let new_cursor_position = current_content_length
+      const assist_input = event.currentTarget.dataset.assistInput
+      const current_content_length = this.data.review_content.length
+      const assist_input_length = assist_input.length
+      const new_review_content = this.data.review_content + assist_input
 
+      let new_cursor_position = current_content_length
       // ; _ < >
       if ( assist_input_length == 1){
         new_cursor_position += 1

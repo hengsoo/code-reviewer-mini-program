@@ -35,7 +35,24 @@
 		  	</tr>
       </view>
       
-      <textarea placeholder="这是我的评论！" class="review-input"
+      <tr class="input-assist {{ review_type }}">
+        <button class='input-assist-button' hover-class="input-assist-button-hover"
+        data-assist-input="{  }" bindtap="assistButtonTap"> { } </button>
+        <button class='input-assist-button' hover-class="input-assist-button-hover"
+        data-assist-input="(  )"  bindtap="assistButtonTap"> ( ) </button>
+        <button class='input-assist-button' hover-class="input-assist-button-hover"
+        data-assist-input="[  ]"  bindtap="assistButtonTap"> [ ] </button>
+        <button class='input-assist-button' hover-class="input-assist-button-hover"
+        data-assist-input=";"  bindtap="assistButtonTap"> ; </button>
+        <button class='input-assist-button' hover-class="input-assist-button-hover"
+        data-assist-input="_"  bindtap="assistButtonTap"> _ </button>
+        <button class='input-assist-button' hover-class="input-assist-button-hover"
+        data-assist-input="<"  bindtap="assistButtonTap"> {{ '<' }} </button>
+        <button class='input-assist-button' hover-class="input-assist-button-hover"
+        data-assist-input=">"  bindtap="assistButtonTap">  {{ '>' }} </button>
+      </tr>
+
+      <textarea placeholder="这是我的评论！" class="review-input {{ review_type }}"
       bindinput="onInputChanged" cursor="{{textarea_cursor}}"
       hold-keyboard="{{true}}" focus="{{focus}}" value="{{review_content}}"/>
 
