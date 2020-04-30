@@ -1,40 +1,49 @@
 <view class="{{show ? 'weui-show' :'weui-hidden'}}"> 
-  <view class="weui-mask init" wx:if="{{mask}}" bindtap="close" data-type="tap"></view>
-  <view class="weui-half-screen-dialog {{extClass}}">
+  <view class="weui-half-screen-dialog">
+
     <view class="weui-half-screen-dialog__hd">
-      <view wx:if="{{closabled}}" class="weui-half-screen-dialog__hd__side" bindtap="close" data-type="close">
+
+      <view class="weui-half-screen-dialog__hd__side" bindtap="close" data-type="close">
         <view class="weui-icon-btn weui-icon-btn_close">关闭</view>
       </view>
+
       <view class="weui-half-screen-dialog__hd__main">
-        <block wx:if="{{title}}">
-          <text class="weui-half-screen-dialog__title">{{title}}</text>
-          <text class="weui-half-screen-dialog__subtitle">{{subTitle}}</text>
-        </block>
-        <block wx:else>
-          <view class="weui-half-screen-dialog__title"><slot name="title"></slot></view>
-        </block>
+          <text class="weui-half-screen-dialog__title">添加评论</text>
       </view>
-      <view class="weui-half-screen-dialog__hd__side" style="display:inline-flex">
-        <button>helo</button>
-        <button>helo</button>
-        <button>helo</button>
+
+      <view class="weui-half-screen-dialog__hd__side">
+        <review-type-button bindtap="typeButtonTap" 
+        class="type-comment {{ (review_type == 'comment') ? 'active':'' }}" data-type="comment">
+        一般</review-type-button>
+
+        <review-type-button bindtap="typeButtonTap" 
+        class="type-advice {{ review_type == 'advice'? 'active':'' }}" data-type="advice">
+        建议</review-type-button>
+
+        <review-type-button bindtap="typeButtonTap" class="type-button" 
+        class="type-warning {{ review_type == 'warning'? 'active':'' }}" data-type="warning">
+        警告</review-type-button>
       </view>
+
     </view>
+
     <view class="weui-half-screen-dialog__bd">
-      <textarea placeholder="这是一个可以自动聚焦的textarea" auto-focus  style="color:black"/>
+      <view class="code">
+       <tr>
+          <th class="head-col">{{line}}</th>
+          <rich-text nodes="{{code}}" space="nbsp" />
+		  	</tr>
+      </view>
+      
+      <textarea placeholder="这是我的评论！" class="review-input"
+      bindinput="onInputChanged" cursor="{{textarea_cursor}}"
+      hold-keyboard="{{true}}" focus="{{focus}}" value="{{review_content}}"/>
+
     </view>
+
     <view class="weui-half-screen-dialog__ft">
-      <block wx:if="{{buttons && buttons.length}}">
-        <button 
-          wx:for="{{buttons}}" 
-          wx:key="index"
-          type="{{item.type}}" 
-          class="weui-btn {{item.className}}" 
-          data-index="{{index}}" 
-          bindtap="buttonTap"
-        >{{item.text}}</button>
-      </block>
-      <slot name="footer" wx:else></slot>
+        <button type="primary" class="weui-btn" bindtap="buttonTap">提交</button>
     </view>
+
   </view>
 </view>

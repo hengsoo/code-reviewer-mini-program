@@ -3,16 +3,24 @@ const app = getApp()
 Page({
   data: {
     file_id: null,
+    file_name:"",
     code: [],
     reviews: [],
     username: "",
-    user_avatar_url: ""
+    user_avatar_url: "",
+    show_input: true,
+    line_number: 6
   },
 
   onLoad: function(options) {
     this.setData({
-      file_id: options.file_id
+      file_id: options.file_id,
+      file_name: options.file_name
     });
+
+    wx.setNavigationBarTitle({
+      title: this.data.file_name
+    })
 
     this.displayCodeAndReviews();
   },
@@ -66,5 +74,9 @@ Page({
   launchReviewInput(event){
     const line_number = event.currentTarget.id
     console.log("Long pressed line ", line_number)
+    this.setData({
+      show_input:true,
+      line_number: line_number
+    })
   }
 })

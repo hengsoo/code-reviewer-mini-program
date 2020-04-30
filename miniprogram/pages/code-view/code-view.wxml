@@ -41,4 +41,4 @@
 	</table>
 </view>
 
-<review-input show="{{true}}"/>
+<review-input show="{{show_input}}" line="{{ line_number }}" code="{{code[line_number-1]}}"/>
