@@ -64,7 +64,8 @@ Component({
     onInputChanged(event) {
       console.log("Input changed")
       this.setData({
-        review_content: event.detail.value
+        review_content: event.detail.value,
+        textarea_cursor: event.detail.cursor
       })
     },
 
@@ -80,13 +81,17 @@ Component({
       })
     },
 
+    // TODO: solve finding current cursor position when there is no input
+    //        (current wechat doesn't support this feature)
     assistButtonTap(event) {
       const assist_input = event.currentTarget.dataset.assistInput
       const current_content_length = this.data.review_content.length
       const assist_input_length = assist_input.length
-      const new_review_content = this.data.review_content + assist_input
+      const new_review_content = 
+        this.data.review_content.slice(0, this.data.textarea_cursor) 
+        + assist_input + this.data.review_content.slice(this.data.textarea_cursor);
 
-      let new_cursor_position = current_content_length
+      let new_cursor_position = this.data.textarea_cursor
       // ; _ < >
       if ( assist_input_length == 1){
         new_cursor_position += 1
