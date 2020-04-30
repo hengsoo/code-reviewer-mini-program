@@ -10,12 +10,12 @@ Component({
       type: Boolean,
       value: false,
     },
-
+    // The reviewd line number
     line: {
       type: Number,
       value: 0,
     },
-
+    // The reviewed code
     code:{
       type: String,
       value: ""
@@ -37,10 +37,11 @@ Component({
     })
   },
 
+  // When values in data change
   observers: {
     'show': function(show) {
+      // Keep review content if line number is same as previous
       if ( show == true ){
-        console.log("BAM",this.properties.line,  this.data.previous_line)
         if ( this.properties.line != this.data.previous_line){
           this.setData({
             review_content: "",
@@ -61,6 +62,7 @@ Component({
       }
     },
 
+    // When user inputs something
     onInputChanged(event) {
       console.log("Input changed")
       this.setData({
@@ -69,9 +71,10 @@ Component({
       })
     },
 
+    // When user changes review type
     typeButtonTap(event){
       const type = event.currentTarget.dataset.type
-      console.log(type)
+      // Default type be comment
       let new_type = 'comment'
       if (type != this.data.review_type){
         new_type = type
@@ -83,14 +86,15 @@ Component({
 
     // TODO: solve finding current cursor position when there is no input
     //        (current wechat doesn't support this feature)
+    // LIMITATIONS: new cursor position doesn't work in mobile when 'show' value doesn't change.
     assistButtonTap(event) {
       const assist_input = event.currentTarget.dataset.assistInput
-      const current_content_length = this.data.review_content.length
       const assist_input_length = assist_input.length
       const new_review_content = 
         this.data.review_content.slice(0, this.data.textarea_cursor) 
         + assist_input + this.data.review_content.slice(this.data.textarea_cursor);
 
+      // Set new cursor position
       let new_cursor_position = this.data.textarea_cursor
       // ; _ < >
       if ( assist_input_length == 1){

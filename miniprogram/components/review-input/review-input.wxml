@@ -11,6 +11,7 @@
           <text class="weui-half-screen-dialog__title">添加评论</text>
       </view>
 
+      <!-- Review type button section -->
       <view class="weui-half-screen-dialog__hd__side">
         <review-type-button bindtap="typeButtonTap" 
         class="type-comment {{ (review_type == 'comment') ? 'active':'' }}" data-type="comment">
@@ -27,6 +28,7 @@
 
     </view>
 
+    <!-- Review input section -->
     <view class="weui-half-screen-dialog__bd">
       <view class="code">
        <tr>
@@ -35,6 +37,7 @@
 		  	</tr>
       </view>
       
+      <!-- Review assist buttons -->
       <tr class="input-assist {{ review_type }}">
         <button class='input-assist-button' hover-class="input-assist-button-hover"
         data-assist-input="{  }" bindtap="assistButtonTap"> { } </button>
@@ -52,12 +55,14 @@
         data-assist-input=">"  bindtap="assistButtonTap">  {{ '>' }} </button>
       </tr>
 
+      <!-- Review textarea input -->
       <textarea id="review-input" placeholder="这是我的评论！" class="review-input {{ review_type }}"
       bindinput="onInputChanged" cursor="{{textarea_cursor}}"
       hold-keyboard="{{true}}" focus="{{focus}}" value="{{review_content}}"/>
 
     </view>
 
+    <!-- Submit review button -->
     <view class="weui-half-screen-dialog__ft">
         <button type="primary" class="weui-btn" bindtap="buttonTap">提交</button>
     </view>
