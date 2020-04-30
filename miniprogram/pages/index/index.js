@@ -7,11 +7,11 @@ Page({
   },
 
   onLoad: function() {
-    wx.redirectTo({
+    /*wx.redirectTo({
       url: '../code-view/code-view?file_id=ex2_抢劫啦.cpp_1587907657008_olBU54272sRsXbkwnGBzS2wSn4k4',
-    })
+    })*/
 
-    // this.getUserMenu()
+    this.getUserMenu()
 
   },
 
@@ -40,7 +40,9 @@ Page({
       })
     }
   },
-
+  moreAction: function(){
+    console.log("moreAction called")
+  },
   addFile: function(){
     let input_file_content = ""
     let input_file_name = ""
