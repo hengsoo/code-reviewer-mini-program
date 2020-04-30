@@ -52,8 +52,12 @@ Page({
       show_more_action: false,
     })
   },
-  share: function(){
-
+  onShareAppMessage: function(){
+    const index = this.data.currentIndex;
+    return{
+      title: '分享代码 ' + this.data.menu[index].file_name,
+      path: 'pages/code-view/code-view?file_id=' + this.data.menu[index].file_id,
+    }
   },
   reName: function(){
 
@@ -64,7 +68,6 @@ Page({
       name: 'deleteFile',
       data:{
         file_id: this.data.menu[this.data.currentIndex].file_id,
-        del_index: this.data.currentIndex,
       },
       success: res => {
         console.log(res);

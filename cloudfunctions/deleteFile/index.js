@@ -10,7 +10,6 @@ exports.main = async (event, context) => {
   const user_openid = cloud.getWXContext().OPENID
   const db = cloud.database()
   const file_id = event.file_id
-  const del_index = event.del_index
 
   await db.collection('program-files').where({
     _id: file_id,

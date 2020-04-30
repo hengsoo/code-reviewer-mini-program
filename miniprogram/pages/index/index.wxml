@@ -24,7 +24,7 @@
                 <view class="weui-actionsheet__title-text">请选择操作</view>
             </view>
             <view class="weui-actionsheet__menu">
-                <view class="weui-actionsheet__cell" bindtap="share">分享</view>
+                <button class="weui-actionsheet__cell" open-type="share">分享</button>
                 <view class="weui-actionsheet__cell" bindtap="reName">重命名</view>
                 <view class="weui-actionsheet__cell weui-actionsheet__cell_warn" bindtap="delete">删除</view>
             </view>
