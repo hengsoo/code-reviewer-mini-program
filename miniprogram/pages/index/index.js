@@ -64,6 +64,7 @@ Page({
       name: 'deleteFile',
       data:{
         file_id: this.data.menu[this.data.currentIndex].file_id,
+        del_index: this.data.currentIndex,
       },
       success: res => {
         console.log(res);
