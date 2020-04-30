@@ -19,6 +19,10 @@
 	visibility: visible
 }
 
+.weui-half-screen-dialog__title{
+  font-size: 17px;
+}
+
 .weui-half-screen-dialog__hd__main{
   padding: 10rpx !important;
   margin-left: 35rpx;
@@ -29,6 +33,7 @@
   overflow: scroll;
   padding: 15rpx 0;
   overflow: scroll;
+  border-radius: 3%;
 }
 
 review-type-button {
@@ -74,4 +79,10 @@ review-type-button.active{
 .review-input{
   color: black;
   width: auto;
+  height: 100px;
+  margin-top: 25rpx;
+  padding: 15rpx;
+  border: 1px solid rgba(42, 44, 65, 0.6);
+  border-radius: 3%;
+  
 }
