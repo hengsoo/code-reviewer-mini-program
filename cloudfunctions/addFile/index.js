@@ -17,22 +17,22 @@ exports.main = async (event, context) => {
   console.log("Add new file: ", file_id)
 
   try {
-    let {
-      highlighted_content,
-      language
-    } = (await cloud.callFunction({
-      name: 'syntaxHighlight',
-      data: {
-        file_name: file_name,
-        file_content: raw_file_content
-      }
-    })).result
+    let { highlighted_content, language } = 
+      (await cloud.callFunction({
+          name: 'syntaxHighlight',
+          data: {
+            file_name: file_name,
+            file_content: raw_file_content
+          }
+        })
+      ).result
 
-    addEntry(user_openid, file_id, language, highlighted_content)
-    updateUserMenu(user_openid, file_id, file_name, language)
+    addProgramFileEntry(user_openid, file_id, language, highlighted_content)
 
     const menu_id = `program_file_menu_` + user_openid
+    updateUserMenu(menu_id, file_id, file_name, language)
     const updated_menu = await db.collection('user-menus').doc(menu_id).get()
+    console.log(updated_menu)
 
     return updated_menu
   }
@@ -44,8 +44,8 @@ exports.main = async (event, context) => {
 
 }
 
-async function addEntry(user_openid, file_id, language, file_highlighted_content) {
-  console.log("Add entry")
+async function addProgramFileEntry(user_openid, file_id, language, highlighted_file_content) {
+  console.log("Add ProgramFile entry")
   try {
     await db.collection('program-files').add({
       data: {
@@ -53,22 +53,19 @@ async function addEntry(user_openid, file_id, language, file_highlighted_content
         _openid: user_openid,
         created_at: new Date(),
         language: language,
-        code: file_highlighted_content,
+        code: highlighted_file_content,
         reviews: []
       }
     })
   } catch (error) {
-    console.error("Add entry failed: ", error)
+    console.error("Add ProgramFile entry failed: ", error)
   }
 }
 
-async function updateUserMenu(user_openid, file_id, file_name, language) {
+async function updateUserMenu(menu_id, file_id, file_name, language) {
   console.log("Update user menu")
   try {
-    await db.collection('user-menus')
-      .where({
-        _openid: user_openid
-      })
+    await db.collection('user-menus').doc(menu_id)
       .update({
         data: {
           menu: db.command.push({
