@@ -7,12 +7,7 @@ Page({
   },
 
   onLoad: function() {
-    wx.redirectTo({
-      url: '../code-view/code-view?file_id=ex2_抢劫啦.cpp_1587907657008_olBU54272sRsXbkwnGBzS2wSn4k4&file_name=ex2_抢劫啦.cpp',
-    })
-
-    // this.getUserMenu()
-
+    this.getUserMenu()
   },
 
   getUserMenu: function(){
