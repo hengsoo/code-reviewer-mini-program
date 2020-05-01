@@ -34,6 +34,7 @@ Component({
     review_content: "",
     textarea_cursor: -1,
     current_line: 0,
+    submit_button_disabled: false,
     error_message: ""
   },
 
@@ -48,15 +49,18 @@ Component({
     'show': function(show) {
       // Keep review content if line number is same as previous
       if ( show == true ){
-        console.log(this.properties.line, this.data.current_line)
         if ( this.properties.line != this.data.current_line){
           this.setData({
             review_content: "",
             current_line: this.properties.line
           })
-          console.log(this.data.line)
         }
+
+        this.setData({
+          submit_button_disabled: false
+        })
       }
+
     }
   },
 
@@ -136,7 +140,8 @@ Component({
         return null
       }
       this.setData({
-        error_message: ""
+        error_message: "",
+        submit_button_disabled: true
       })
 
       console.log("Submit review")
