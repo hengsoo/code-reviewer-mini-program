@@ -4,17 +4,19 @@
 
 <view class="container">
 
-    <mp-cells title="文件列表" class="fill-width">
-        <mp-cell wx:for="{{menu}}" wx:key="file_id" link hover 
-        url="../code-view/code-view?file_id={{item.file_id}}" value="{{ item.file_name }}">
-            <image class="cell-icon" slot="icon" src="../../images/index/language-{{item.language}}.png"></image>
-            
-        </mp-cell>
-        
-        <view wx:for="{{menu}}" wx:key="file_id" class="more-area" bindtap="moreAction" data-operation="{{index}}" hover-stop-propagation>
-                <image src="/images/index/icon_more.png" mode="widthFix" class="icon-more"></image>
+    <mp-cells title="文件列表" class="fill-width"></mp-cells>
+
+    <navigator wx:for="{{menu}}" wx:key="file_id" class="list-card fill-width" link hover url="../code-view/code-view?file_id={{item.file_id}}">
+        <image class="cell-icon" slot="icon" src="../../images/index/language-{{item.language}}.png"></image>
+        <view class="list-card__info">
+            <view class="list-card__info-title font-black-34">{{item.file_name}}</view>
         </view>
-    </mp-cells>
+        <view class="more-area" data-type="create" data-index="{{index}}" catchtap="moreAction" data-operation="{{index}}" hover-stop-propagation>
+            <image src="/images/index/icon_more.png" mode="widthFix" class="icon-more"></image>
+        </view>
+    </navigator>
+
+
     <button class="add-button" hover-class="add-button-hover" bindtap="addFile">+</button>
 
     <view wx:if="{{show_more_action}}" class="fadeIn" bindtap="cancelActionSheet">

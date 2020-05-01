@@ -13,12 +13,45 @@ mp-cell:first-child>view{
 
 .cell-icon{
   margin-right: 16px;
+  margin-left: 16px;
   vertical-align: middle;
   width: 100rpx !important;  /* aprox 50px */
   height: 100rpx !important; /* aprox 50px */
 }
+/* 列表样式 */
+.list-card {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  width: 100%;
+  align-items: center;
+  padding: 10px 15px; 
+  background-color: #fff;
+}
+/* 列表图片 */
+.list-card__img {
+  margin-right: 16px;
+  vertical-align: middle;
+  width: 100rpx !important;  /* aprox 50px */
+  height: 100rpx !important; /* aprox 50px */
+}
+/* 列表信息 */
+.list-card__info {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+}
+/* 列表标题 */
+.list-card__info-title {
+  margin-bottom: 5px;
+}
 
+/* “更多”按钮的区域 */
 .more-area {
+  margin-right: 16px;
   position: relative;
   height: 30px;
   text-align: center;
