@@ -8,7 +8,7 @@ Page({
     reviews: [],
     username: "",
     user_avatar_url: "",
-    show_input: true,
+    show_input: false,
     line_number: 6
   },
 
@@ -78,5 +78,13 @@ Page({
       show_input:true,
       line_number: line_number
     })
+  },
+
+  updateReviews(event){
+    const new_reviews = event.detail.reviews
+    this.setData({
+      reviews: new_reviews
+    })
   }
+  
 })

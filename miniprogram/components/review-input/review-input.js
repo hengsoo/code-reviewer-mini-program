@@ -10,7 +10,7 @@ Component({
       type: Boolean,
       value: false,
     },
-    // The reviewd line number
+    // The reviewed line number
     line: {
       type: Number,
       value: 0,
@@ -19,7 +19,12 @@ Component({
     code:{
       type: String,
       value: ""
-    }
+    },
+    // Program file id
+    fileId:{
+      type:String,
+      value: ""
+    } 
   },
 
   data:{
@@ -28,7 +33,7 @@ Component({
     review_type: "comment",
     review_content: "",
     textarea_cursor: -1,
-    line: 0
+    current_line: 0
   },
 
   attached: function() {
@@ -42,11 +47,13 @@ Component({
     'show': function(show) {
       // Keep review content if line number is same as previous
       if ( show == true ){
-        if ( this.properties.line != this.data.line){
+        console.log(this.properties.line, this.data.current_line)
+        if ( this.properties.line != this.data.current_line){
           this.setData({
             review_content: "",
-           line: this.properties.line
+            current_line: this.properties.line
           })
+          console.log(this.data.line)
         }
       }
     }
@@ -113,16 +120,18 @@ Component({
     },
 
     submitContent(event){
+      const program_file_id = this.properties.fileId
       const review_type = this.data.review_type
       const review_author_name = app.globalData.user_info.nickName
       const review_author_avatar_url = app.globalData.user_info.avatarUrl
-      const line_number = this.data.line
+      const line_number = this.data.current_line
       const review_content = this.data.review_content
 
       console.log("Submit review")
       wx.cloud.callFunction({
         name: 'addReview',
         data: {
+          file_id: program_file_id,
           line: line_number,
           type: review_type,
           author_name: review_author_name,
@@ -130,8 +139,15 @@ Component({
           content: review_content
         },
         success: res => {
-          console.log(res)
-          
+          this.triggerEvent('updateReviews', {
+            reviews: res.result
+          })
+          this.setData({
+            review_content: "",
+            current_line: 0,
+            show: false,
+            focus: false
+          })
         },
         fail: error => {
           console.error('Add review FAILED: ', error)
