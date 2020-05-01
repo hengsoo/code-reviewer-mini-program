@@ -28,6 +28,11 @@
   margin-left: 35rpx;
 }
 
+.weui-half-screen-dialog__ft {
+  padding: 18px 24px 32px;
+  text-align: center;  
+}
+
 .code{
   background: #282923;
   overflow: scroll;
@@ -134,4 +139,8 @@ review-type-button.active{
   width: 80rpx;
   height: 50rpx !important;
   background: rgba(87, 87, 89, 0.6);
+}
+
+.error-message{
+  color: red
 }

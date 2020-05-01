@@ -59,7 +59,7 @@
       <textarea id="review-input" placeholder="这是我的评论！" class="review-input {{ review_type }}"
       bindinput="onInputChanged" cursor="{{textarea_cursor}}"
       hold-keyboard="{{true}}" focus="{{focus}}" value="{{review_content}}"/>
-
+      <text class='error-message'>{{ error_message }}</text>
     </view>
 
     <!-- Submit review button -->

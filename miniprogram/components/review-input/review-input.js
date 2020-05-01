@@ -33,7 +33,8 @@ Component({
     review_type: "comment",
     review_content: "",
     textarea_cursor: -1,
-    current_line: 0
+    current_line: 0,
+    error_message: ""
   },
 
   attached: function() {
@@ -126,6 +127,17 @@ Component({
       const review_author_avatar_url = app.globalData.user_info.avatarUrl
       const line_number = this.data.current_line
       const review_content = this.data.review_content
+
+      if ( review_content.trim() === "" ){
+        console.log("Review must not be empty")
+        this.setData({
+          error_message: "*评论不可为空"
+        })
+        return null
+      }
+      this.setData({
+        error_message: ""
+      })
 
       console.log("Submit review")
       wx.cloud.callFunction({
