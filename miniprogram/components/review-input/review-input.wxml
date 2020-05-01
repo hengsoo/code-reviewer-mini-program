@@ -64,7 +64,7 @@
 
     <!-- Submit review button -->
     <view class="weui-half-screen-dialog__ft">
-        <button type="primary" class="weui-btn" bindtap="buttonTap">提交</button>
+        <button type="primary" class="weui-btn" bindtap="submitContent">提交</button>
     </view>
 
   </view>

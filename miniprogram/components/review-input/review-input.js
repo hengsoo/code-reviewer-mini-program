@@ -28,7 +28,7 @@ Component({
     review_type: "comment",
     review_content: "",
     textarea_cursor: -1,
-    previous_line: 0,
+    line: 0
   },
 
   attached: function() {
@@ -42,10 +42,10 @@ Component({
     'show': function(show) {
       // Keep review content if line number is same as previous
       if ( show == true ){
-        if ( this.properties.line != this.data.previous_line){
+        if ( this.properties.line != this.data.line){
           this.setData({
             review_content: "",
-            previous_line: this.properties.line
+           line: this.properties.line
           })
         }
       }
@@ -109,6 +109,33 @@ Component({
         focus: true,
         textarea_cursor: new_cursor_position,
         review_content: new_review_content
+      })
+    },
+
+    submitContent(event){
+      const review_type = this.data.review_type
+      const review_author_name = app.globalData.user_info.nickName
+      const review_author_avatar_url = app.globalData.user_info.avatarUrl
+      const line_number = this.data.line
+      const review_content = this.data.review_content
+
+      console.log("Submit review")
+      wx.cloud.callFunction({
+        name: 'addReview',
+        data: {
+          line: line_number,
+          type: review_type,
+          author_name: review_author_name,
+          author_avatar_url: review_author_avatar_url,
+          content: review_content
+        },
+        success: res => {
+          console.log(res)
+          
+        },
+        fail: error => {
+          console.error('Add review FAILED: ', error)
+        }
       })
     }
 

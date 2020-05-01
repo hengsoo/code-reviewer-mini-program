@@ -12,6 +12,7 @@ App({
     }
 
     this.globalData = {
+      // user_info contains avatarUrl, city, country, gender, language, nickName, province
       user_info: null,
       openid: null
     }
