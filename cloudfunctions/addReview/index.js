@@ -42,10 +42,12 @@ exports.main = async (event, context) => {
     }
   })
 
+  // Join the review content with <br>
   highlighted_review_content = highlighted_review_content.join("<br>")
 
   console.log("Add entry")
   let review_data = {}
+  // Create line number key
   const key = 'reviews.' + line_number
   review_data[key] = db.command.push(
       {
@@ -56,17 +58,18 @@ exports.main = async (event, context) => {
       }
   )
 
-  await db.collection('program-files').where({
-    _id: file_id
-  })
-  .update({
+  await db.collection('program-files').doc(file_id)
+   .update({
     data: review_data
   })
-  console.log("Add successed")
+
+  console.log("Add success")
   
+  // Get updated review
   const program_file = await db.collection('program-files').doc(file_id).get()
-  const new_reviews = program_file.data.reviews
-  return new_reviews
+  const updated_reviews = program_file.data.reviews
+
+  return updated_reviews
 }
 
 function getLanguageAndGrammar(file_extension, prism){
