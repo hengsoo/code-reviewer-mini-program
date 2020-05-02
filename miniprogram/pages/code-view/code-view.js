@@ -8,8 +8,11 @@ Page({
     reviews: [],
     username: "",
     user_avatar_url: "",
-    show_input: false,
-    line_number: 0
+    show_review_input: false,
+    review_input_line_number: 0,
+    show_action_sheet: true,
+    action_sheet_review_line_number: 0,
+    action_sheet_review_index: 0
   },
 
   onLoad: function(options) {
@@ -75,8 +78,8 @@ Page({
     const line_number = event.currentTarget.id
     console.log("Long pressed line ", line_number)
     this.setData({
-      show_input:true,
-      line_number: line_number
+      show_review_input:true,
+      review_input_line_number: line_number
     })
   },
 
@@ -85,6 +88,51 @@ Page({
     this.setData({
       reviews: new_reviews
     })
-  }
+  },
   
+  launchReviewActionSheet(event){
+    const line_number = event.currentTarget.dataset.reviewLine
+    const review_index =  event.currentTarget.dataset.reviewIndex
+    const review_author_openid = event.currentTarget.dataset.reviewAuthorOpenid
+
+    // Check if user is review's author
+    if ( review_author_openid === app.globalData.openid){
+      this.setData({
+        show_action_sheet: true,
+        action_sheet_review_line_number: line_number,
+        action_sheet_review_index: review_index
+      })
+    }
+  },
+
+  actionSheetTap(event){
+    const review_index =  this.data.action_sheet_review_index
+    const review_line_number = this.data.action_sheet_review_line_number
+    const value = event.detail.value
+
+    if ( value == 'delete' ) {
+
+      // Call delete reivew cloud function
+      wx.cloud.callFunction({
+        name: 'deleteReview',
+        data:{
+          line_number: review_line_number,
+          index: review_index
+        },
+        
+        // Delete success
+        success: res => {
+          this.triggerEvent('updateReviews', {
+            reviews: res.result
+          })
+        },
+        // Delete fail
+        fail: error => {
+          console.error("Delete review failed: ", error)
+        }
+      })
+
+    }
+  }
+
 })

@@ -19,19 +19,20 @@
 				wx:for-item="review"  wx:for-index="review_index" wx:key="review_index">
 
 					<tr>
-
 						<th class="head-col"/>
+						<view class="review" bindlongpress="launchReviewActionSheet" 
+							data-review-line="{{ index+1 }}" data-review-index="{{ review_index }}"
+							data-review-author-openid="{{ review.author_openid }}">
 
-						<view class="review">
 							<view class="review-info">
 								<image class="review-info-avatar" src="{{ review.author_avatar_url }}"></image>
 								<text>{{ review.author_name }}</text>
 							</view>
+
 							<view class="review-content review-{{ review.type }}">
 								<rich-text nodes="{{review.content}}" space="nbsp" class="content"/>
 							</view>
 						</view>
-
 					</tr>
 
 				</block>
@@ -41,5 +42,12 @@
 	</table>
 </view>
 
-<review-input show="{{show_input}}" line="{{ line_number }}" code="{{code[line_number-1]}}" 
+<!-- Review input -->
+<review-input show="{{show_review_input}}" line="{{ review_input_line_number }}" code="{{code[line_number-1]}}" 
 fileId="{{ file_id }}" bindupdateReviews="updateReviews" />
+
+<!-- Review action sheet -->
+<mp-actionSheet bindactiontap="actionSheetTap" show="{{show_action_sheet}}" 
+	actions="{{ [{ text: '删除评论', type: 'warn', value: 'delete' }] }}" title="评论操作"
+	bindupdateReviews="updateReviews">
+</mp-actionSheet>

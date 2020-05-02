@@ -9,6 +9,9 @@ Page({
   },
 
   onLoad: function() {
+    wx.redirectTo({
+      url: '../code-view/code-view?file_id=ex2_抢劫啦.cpp_1588397071241_olBU54272sRsXbkwnGBzS2wSn4k4&file_name=ex2_抢劫啦.cpp',
+    })
     this.getUserMenu()
   },
 

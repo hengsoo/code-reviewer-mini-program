@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "review-input" : "../../components/review-input/review-input"
+    "review-input" : "../../components/review-input/review-input",
+    "mp-actionSheet": "../../components/weui/actionsheet/actionsheet"
   }
 }
