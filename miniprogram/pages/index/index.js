@@ -3,16 +3,16 @@ const app = getApp()
 
 Page({
   data: {
-    menu : [],
+    menu: [],
     show_more_action: false,
-    currentIndex: 0,
+    current_menu_index: 0,
   },
 
-  onLoad: function() {
+  onLoad: function () {
     this.getUserMenu()
   },
 
-  getUserMenu: function(){
+  getUserMenu: function () {
     // Call cloud funtion getOpenID
     wx.cloud.callFunction({
       name: 'getUserMenu',
@@ -27,54 +27,60 @@ Page({
     })
   },
 
-  updateUserMenu: function(new_menu){
+  updateUserMenu: function (new_menu) {
     // Set latest file at top
     new_menu = new_menu.reverse()
 
-    if (new_menu){
+    if (new_menu) {
       this.setData({
-        menu :  new_menu
+        menu: new_menu
       })
     }
   },
-  moreAction: function(e){
+
+  moreAction: function (e) {
     this.setData({
       show_more_action: true,
-      currentIndex: e.currentTarget.dataset.operation,
+      current_menu_index: e.currentTarget.dataset.operation,
     })
   },
-  cancelActionSheet: function(){
+
+  cancelActionSheet: function () {
     this.setData({
       show_more_action: false,
     })
   },
-  onShareAppMessage: function(){
-    const index = this.data.currentIndex;
-    return{
-      title: '分享代码 ' + this.data.menu[index].file_name,
+
+  onShareAppMessage: function () {
+    const current_menu_index = this.data.current_menu_index;
+    return {
+      title: '分享代码 ' + this.data.menu[current_menu_index].file_name,
       path: 'pages/code-view/code-view?file_id=' + this.data.menu[index].file_id,
     }
   },
-  reName: function(){
+
+  reName: function () {
 
   },
-  delete: function(){
+
+  delete: function () {
     console.log(this.data.menu)
     wx.cloud.callFunction({
       name: 'deleteFile',
-      data:{
-        file_id: this.data.menu[this.data.currentIndex].file_id,
+      data: {
+        file_id: this.data.menu[this.data.current_menu_index].file_id,
       },
       success: res => {
         console.log(res);
         this.getUserMenu();
       },
-      fail: error =>{
+      fail: error => {
         console.log('Cloud deleteFile failed', error)
       },
     })
   },
-  addFile: function(){
+  
+  addFile: function () {
     let input_file_content = ""
     let input_file_name = ""
 
@@ -87,7 +93,7 @@ Page({
         // Read file 
         wx.getFileSystemManager().readFile({
           filePath: res.tempFiles[0].path,
-          encoding:'utf-8',
+          encoding: 'utf-8',
 
           success: res => {
             console.log(res)
@@ -96,7 +102,7 @@ Page({
             wx.cloud.callFunction({
               name: 'addFile',
               data: {
-                file_name : input_file_name,
+                file_name: input_file_name,
                 file_content: input_file_content
               },
               success: res => {
@@ -110,16 +116,15 @@ Page({
             })
           },
           // Read file failed
-          fali: error =>{
+          fali: error => {
             console.error("Read file failed: ", error)
           }
         })
       },
       // Choose file failed
-      fail: error =>{
+      fail: error => {
         console.error("Choose file failed:", error)
       }
     })
   }
-
 })

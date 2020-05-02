@@ -1,19 +1,22 @@
-// 云函数入口文件
+// file of entry of cloud function
 const cloud = require('wx-server-sdk')
 
 cloud.init({
   env: cloud.DYNAMIC_CURRENT_ENV
 })
 
-// 云函数入口函数
+// entry of cloud function
 exports.main = async (event, context) => {
   const user_openid = cloud.getWXContext().OPENID
   const db = cloud.database()
   const file_id = event.file_id
 
+  // remove record in program-files
   await db.collection('program-files').where({
     _id: file_id,
   }).remove()
+
+  // remove record in menu array in particular user-menus
   await db.collection('user-menus').where({
     _openid: user_openid,
   }).update({
@@ -23,8 +26,4 @@ exports.main = async (event, context) => {
       }),
     }
   })
-
-  return {
-    event,
-  }
 }

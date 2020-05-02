@@ -18,7 +18,7 @@ mp-cell:first-child>view{
   width: 100rpx !important;  /* aprox 50px */
   height: 100rpx !important; /* aprox 50px */
 }
-/* 列表样式 */
+/* file list */
 .list-card {
   position: relative;
   display: -webkit-box;
@@ -31,26 +31,26 @@ mp-cell:first-child>view{
   padding: 10px 15px; 
   background-color: #fff;
 }
-/* 列表图片 */
+
 .list-card__img {
   margin-right: 16px;
   vertical-align: middle;
   width: 100rpx !important;  /* aprox 50px */
   height: 100rpx !important; /* aprox 50px */
 }
-/* 列表信息 */
+
 .list-card__info {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   flex: 1;
 }
-/* 列表标题 */
+
 .list-card__info-title {
   margin-bottom: 5px;
 }
 
-/* “更多”按钮的区域 */
-.more-area {
+/* area of "..." */
+.more-action {
   margin-right: 16px;
   position: relative;
   height: 30px;
@@ -58,17 +58,21 @@ mp-cell:first-child>view{
   width: 30px;
 }
 
+/* "..." icon */
 .icon-more {
   position: relative;
   top: 5px;
   width: 20px;
 }
 
-.more-icon{
-  margin-left: 16px;
-  vertical-align: middle;
-  width: 100rpx !important;  /* aprox 50px */
-  height: 100rpx !important; /* aprox 50px */
+.actionsheet-button{
+  position: relative;
+  padding: 16px;
+	text-align: center;
+  font-size: 17px;
+  width: auto !important;
+  line-height: 1.41176471;
+  font-weight: 100;
 }
 
 .add-button{
