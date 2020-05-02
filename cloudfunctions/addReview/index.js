@@ -36,7 +36,7 @@ exports.main = async (event, context) => {
     // Join the review content with <br>
     highlighted_content = highlighted_content.join("<br>")
 
-    addReviewEntry(user_openid, file_id, line_number, author_name, 
+    await addReviewEntry(user_openid, file_id, line_number, author_name, 
       author_avatar_url, type, highlighted_content)
 
     // Get updated review
