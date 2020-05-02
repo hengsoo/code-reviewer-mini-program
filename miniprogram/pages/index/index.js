@@ -8,7 +8,7 @@ Page({
     current_menu_index: 0,
   },
 
-  onLoad: function () {
+  onLoad: function() {
     this.getUserMenu()
   },
 
