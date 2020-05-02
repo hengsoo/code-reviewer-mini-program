@@ -9,7 +9,7 @@ Page({
     username: "",
     user_avatar_url: "",
     show_input: false,
-    line_number: 6
+    line_number: 0
   },
 
   onLoad: function(options) {
