@@ -78,4 +78,5 @@ async function updateUserMenu(menu_id, file_id, file_name, language) {
   } catch (error) {
     console.error("Update user menu failed: ", error)
   }
+
 }
