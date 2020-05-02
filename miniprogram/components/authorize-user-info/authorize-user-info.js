@@ -15,7 +15,9 @@ Component({
   // Get userInfo when component is attached
   lifetimes: {
     attached: function() {
-      this.getUserInfo()
+      if (app.globalData.user_info == null){
+        this.getUserInfo()
+      }
     }
   },
   

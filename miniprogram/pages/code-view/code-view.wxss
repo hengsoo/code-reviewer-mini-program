@@ -12,31 +12,50 @@ page {
   margin: 15rpx 25rpx 0 0;
 }
 
-table {
-  display: flex;
-  flex-direction: column;
-}
-
-tr {
-  display: inline-flex;
-  flex-direction: row;
-}
-
-.head-col {
-  position: sticky;
-  left: 0;
-  top: auto;
-  min-width: 90rpx;
-  border-top-width: 1px;
-  /*only relevant for first row*/
-  margin-top: -1px;
-  /* background: #282923; */
-  text-align: center;
-  color: #8c8e8a;
-  background: #282923;
-  /*compensate for top border*/
-}
-
 .code {
   white-space: nowrap;
+}
+
+.review {
+  margin:  10rpx 0;
+}
+
+.review-content {
+  border-radius: 6% !important;
+  border-top-width: 2px;
+  border-top-style: solid;
+  padding: 20rpx 40rpx;
+}
+
+.content{
+  white-space: nowrap;
+}
+
+.review-comment {
+  border-top-color:#dadad9;
+  background-color: rgba(42, 44, 65, 0.6);
+}
+
+.review-advice {
+  border-top-color:#5bc3eb;
+  background-color: rgba(43, 64, 64, 0.6);
+}
+
+.review-warning {
+  border-top-color:#f06449;
+  background-color: rgba(100, 17, 63, 0.6);
+}
+
+.review-info {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  color: #f7f8f7;
+}
+
+image.review-info-avatar{
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 50%;
+  margin: 10rpx 20rpx 10rpx 10rpx;
 }

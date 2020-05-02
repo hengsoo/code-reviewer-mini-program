@@ -13,9 +13,66 @@ mp-cell:first-child>view{
 
 .cell-icon{
   margin-right: 16px;
+  margin-left: 16px;
   vertical-align: middle;
   width: 100rpx !important;  /* aprox 50px */
   height: 100rpx !important; /* aprox 50px */
+}
+/* file list */
+.list-card {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  width: 100%;
+  align-items: center;
+  padding: 10px 15px; 
+  background-color: #fff;
+}
+
+.list-card__img {
+  margin-right: 16px;
+  vertical-align: middle;
+  width: 100rpx !important;  /* aprox 50px */
+  height: 100rpx !important; /* aprox 50px */
+}
+
+.list-card__info {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+}
+
+.list-card__info-title {
+  margin-bottom: 5px;
+}
+
+/* area of "..." */
+.more-action {
+  margin-right: 16px;
+  position: relative;
+  height: 30px;
+  text-align: center;
+  width: 30px;
+}
+
+/* "..." icon */
+.icon-more {
+  position: relative;
+  top: 5px;
+  width: 20px;
+}
+
+.actionsheet-button{
+  position: relative;
+  padding: 16px;
+	text-align: center;
+  font-size: 17px;
+  width: auto !important;
+  line-height: 1.41176471;
+  font-weight: 100;
 }
 
 .add-button{

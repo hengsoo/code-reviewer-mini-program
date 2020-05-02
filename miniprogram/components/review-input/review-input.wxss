@@ -1,0 +1,146 @@
+@import '../prism.wxss';
+
+.weui-mask,
+.weui-half-screen-dialog {
+	transition: all .3s
+}
+
+.weui-hidden .weui-mask {
+	visibility: hidden;
+	opacity: 0
+}
+
+.weui-hidden .weui-half-screen-dialog {
+	transform: translateY(100%)
+}
+
+.weui-show .weui-mask {
+	opacity: 1;
+	visibility: visible
+}
+
+.weui-half-screen-dialog__title{
+  font-size: 17px;
+}
+
+.weui-half-screen-dialog__hd__main{
+  padding: 10rpx !important;
+  margin-left: 35rpx;
+}
+
+.weui-half-screen-dialog__ft {
+  padding: 18px 24px 32px;
+  text-align: center;  
+}
+
+.code{
+  background: #282923;
+  overflow: scroll;
+  padding: 15rpx 0;
+  overflow: scroll;
+  border-radius: 3%;
+}
+
+review-type-button {
+  width: 120rpx;
+  background: transparent;
+  padding: 10rpx 12rpx;
+  margin: 5rpx;
+  font-size: 14px !important;
+  border-radius: 15%;
+  font-weight: 400;
+  letter-spacing: 5rpx;
+  border: 1px solid transparent
+}
+
+review-type-button.active{
+  color:white;
+}
+
+.type-comment {
+  color: #989aa6;
+  border-color: #989aa6;
+}
+.type-comment.active{
+  background: #989aa6;
+}
+
+.type-advice {
+  color: #5bc3eb;
+  border-color: #5bc3eb;
+}
+.type-advice.active{
+  background: #5bc3eb;
+}
+
+.type-warning {
+  color: #fa4949;
+  border-color: #fa4949;
+}
+.type-warning.active{
+  background: #fa4949;
+}
+
+.review-input{
+  color: black;
+  width: auto;
+  height: 100px;
+  padding: 15rpx;
+  border: 1px solid #282923;
+  border-radius: 0 3% 3% 3%;
+}
+
+.review-input.comment{
+  border-color: #989aa6;
+  background: rgba(42, 44, 65, 0.1);
+}
+.review-input.advice{
+  border-color: #5bc3eb;
+  background: rgba(43, 64, 64, 0.1);
+}
+.review-input.warning{
+  border-color: #fa4949;
+  background: rgba(100, 17, 63, 0.1);
+}
+
+.input-assist {
+  width: auto;
+  margin-top: 15rpx;
+  background: rgba(42, 44, 65, 0.6);
+  padding: 5rpx;
+  border-radius: 3% 3% 0 0;
+}
+
+.input-assist.comment{
+  background: #989aa6;
+}
+.input-assist.advice{
+  background: #5bc3eb;
+}
+.input-assist.warning{
+  background: #fa4949;
+}
+
+.input-assist-button {
+  width: 70rpx;
+  min-width: 70rpx;
+  max-width: 70rpx;
+  height: 50rpx !important;
+  min-height: 50rpx !important;
+  max-height: 50rpx !important;
+  color:white;
+  font-size: small;
+  padding: 10rpx;
+  margin: 0;
+  line-height: 1;
+}
+
+.input-assist-button-hover{
+  width: 80rpx;
+  height: 50rpx !important;
+  background: rgba(87, 87, 89, 0.6);
+}
+
+.error-message{
+  color: red
+}

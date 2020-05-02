@@ -3,18 +3,38 @@ const app = getApp()
 Page({
   data: {
     file_id: null,
+    file_name:"",
     code: [],
-    reviews: []
+    reviews: [],
+    username: "",
+    user_avatar_url: "",
+    show_input: false,
+    line_number: 0
   },
 
   onLoad: function(options) {
     this.setData({
-      file_id: options.file_id
+      file_id: options.file_id,
+      file_name: options.file_name
     });
-    this.setCodeAndReviews();
+
+    wx.setNavigationBarTitle({
+      title: this.data.file_name
+    })
+
+    this.displayCodeAndReviews();
   },
 
-  setCodeAndReviews: function() {
+  onShow: function(){
+    if (app.globalData.user_info != null){
+      this.setData({
+        username: app.globalData.user_info.nickName,
+        user_avatar_url: app.globalData.user_info.avatarUrl
+      });
+    }
+  },
+
+  displayCodeAndReviews: function() {
     console.log('Getting program file: ');
     console.log(this.data.file_id);
 
@@ -26,7 +46,14 @@ Page({
       
       // Get programFile sucess
       success: res => {
-        console.log(res)
+
+        if( Object.keys(res.result).length === 0 ){
+          console.log("Empty result")
+          wx.redirectTo({
+            url: '../index/index',
+          })
+        }
+
         const program_file_code = res.result.data.code;
         const program_file_reviews = res.result.data.reviews;
 
@@ -34,6 +61,7 @@ Page({
           code: program_file_code,
           reviews: program_file_reviews
         })
+
       },
 
       // Get programFile failed
@@ -41,6 +69,22 @@ Page({
         console.error('Cloud getProgramFile failed', error)
       }
     }) 
-  }
+  },
 
+  launchReviewInput(event){
+    const line_number = event.currentTarget.id
+    console.log("Long pressed line ", line_number)
+    this.setData({
+      show_input:true,
+      line_number: line_number
+    })
+  },
+
+  updateReviews(event){
+    const new_reviews = event.detail.reviews
+    this.setData({
+      reviews: new_reviews
+    })
+  }
+  
 })
