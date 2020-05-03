@@ -87,7 +87,6 @@ Page({
   },
 
   updateReviews(event){
-    console.log("update muhaha")
     console.log(event)
     const new_reviews = event.detail.reviews
     this.setData({
