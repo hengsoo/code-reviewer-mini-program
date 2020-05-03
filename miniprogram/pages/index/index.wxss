@@ -97,3 +97,32 @@ mp-cell:first-child>view{
 .add-button-hover{
   background: #663bb782;
 }
+
+/* use in action sheet animation */
+.fadeIn {
+  -webkit-animation: c .3s forwards;
+  animation: c .3s forwards;
+}
+
+.fadeOut {
+  -webkit-animation: d .3s forwards;
+  animation: d .3s forwards
+}
+
+@keyframes c {
+  0% {
+    opacity: 0
+  }
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes d {
+  0% {
+    opacity: 1
+  }
+  to {
+    opacity: 0
+  }
+}
