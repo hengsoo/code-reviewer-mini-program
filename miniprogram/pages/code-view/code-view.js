@@ -10,6 +10,7 @@ Page({
     user_avatar_url: "",
     show_review_input: false,
     review_input_line_number: 0,
+    review_id : "",
     show_action_sheet: true,
     action_sheet_review_line_number: 0,
     action_sheet_review_index: 0
@@ -84,6 +85,7 @@ Page({
   },
 
   updateReviews(event){
+    console.log(event)
     const new_reviews = event.detail.reviews
     this.setData({
       reviews: new_reviews
@@ -94,13 +96,15 @@ Page({
     const line_number = event.currentTarget.dataset.reviewLine
     const review_index =  event.currentTarget.dataset.reviewIndex
     const review_author_openid = event.currentTarget.dataset.reviewAuthorOpenid
+    const review_id = event.currentTarget.dataset.reviewId
 
     // Check if user is review's author
     if ( review_author_openid === app.globalData.openid){
       this.setData({
         show_action_sheet: true,
         action_sheet_review_line_number: line_number,
-        action_sheet_review_index: review_index
+        action_sheet_review_index: review_index,
+        review_id: review_id
       })
     }
   },
@@ -108,20 +112,24 @@ Page({
   actionSheetTap(event){
     const review_index =  this.data.action_sheet_review_index
     const review_line_number = this.data.action_sheet_review_line_number
+    const review_id =  this.data.review_id
     const value = event.detail.value
 
     if ( value == 'delete' ) {
-
+      console.log("delete", review_line_number,review_index)
       // Call delete reivew cloud function
       wx.cloud.callFunction({
         name: 'deleteReview',
         data:{
+          review_id: review_id,
+          file_id: this.data.file_id,
           line_number: review_line_number,
           index: review_index
         },
         
         // Delete success
         success: res => {
+          console.log(res)
           this.triggerEvent('updateReviews', {
             reviews: res.result
           })
