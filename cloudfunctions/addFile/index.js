@@ -27,10 +27,10 @@ exports.main = async (event, context) => {
         })
       ).result
 
-    addProgramFileEntry(user_openid, file_id, language, highlighted_content)
+    await addProgramFileEntry(user_openid, file_id, language, highlighted_content)
 
     const menu_id = `program_file_menu_` + user_openid
-    updateUserMenu(menu_id, file_id, file_name, language)
+    await updateUserMenu(menu_id, file_id, file_name, language)
     const updated_menu = await db.collection('user-menus').doc(menu_id).get()
     console.log(updated_menu)
 
@@ -54,7 +54,7 @@ async function addProgramFileEntry(user_openid, file_id, language, highlighted_f
         created_at: new Date(),
         language: language,
         code: highlighted_file_content,
-        reviews: []
+        reviews: {}
       }
     })
   } catch (error) {
