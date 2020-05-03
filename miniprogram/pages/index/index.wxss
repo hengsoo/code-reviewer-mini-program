@@ -30,6 +30,7 @@ mp-cell:first-child>view{
   align-items: center;
   padding: 10px 15px; 
   background-color: #fff;
+  border-top: 1rpx solid rgba(0, 0, 0, .1);
 }
 
 .list-card__img {

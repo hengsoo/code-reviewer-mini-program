@@ -2,6 +2,7 @@
 const app = getApp()
 
 Page({
+  mixins: [require('../../mixin/themeChanged')],
   data: {
     menu: [],
     show_more_action: false,
