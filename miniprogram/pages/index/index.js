@@ -4,6 +4,7 @@ const app = getApp()
 Page({
   data: {
     menu: [],
+    recent_menu: [],
     show_more_action: false,
     current_menu_index: 0,
   },
@@ -55,16 +56,16 @@ Page({
     const current_menu_index = this.data.current_menu_index;
     return {
       title: '分享代码 ' + this.data.menu[current_menu_index].file_name,
-      path: 'pages/code-view/code-view?file_id=' + this.data.menu[index].file_id,
+      path: 'pages/code-view/code-view?file_id=' + this.data.menu[current_menu_index].file_id,
     }
   },
-
-  reName: function () {
-
+  // TODO: renameFile
+  renameFile: function () {
+    
   },
 
-  delete: function () {
-    console.log(this.data.menu)
+  deleteFile: function () {
+    // console.log(this.data.menu)
     wx.cloud.callFunction({
       name: 'deleteFile',
       data: {
@@ -72,7 +73,7 @@ Page({
       },
       success: res => {
         console.log(res);
-        this.getUserMenu();
+        this.updateUserMenu(res.result.data.menu);
       },
       fail: error => {
         console.log('Cloud deleteFile failed', error)

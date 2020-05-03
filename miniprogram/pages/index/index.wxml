@@ -28,8 +28,8 @@
 			</view>
 			<view class="weui-actionsheet__menu">
 				<button class="actionsheet-button" open-type="share">分享</button>
-				<view class="weui-actionsheet__cell" bindtap="reName">重命名</view>
-				<view class="weui-actionsheet__cell weui-actionsheet__cell_warn" bindtap="delete">删除</view>
+				<view class="weui-actionsheet__cell" bindtap="renameFile">重命名</view>
+				<view class="weui-actionsheet__cell weui-actionsheet__cell_warn" bindtap="deleteFile">删除</view>
 			</view>
 			<view class="weui-actionsheet__action">
 				<view class="weui-actionsheet__cell">取消</view>

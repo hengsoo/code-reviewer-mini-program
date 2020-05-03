@@ -30,6 +30,7 @@ mp-cell:first-child>view{
   align-items: center;
   padding: 10px 15px; 
   background-color: #fff;
+  border-top: 1rpx solid rgba(0, 0, 0, .1);
 }
 
 .list-card__img {
@@ -95,4 +96,33 @@ mp-cell:first-child>view{
 
 .add-button-hover{
   background: #663bb782;
+}
+
+/* use in action sheet animation */
+.fadeIn {
+  -webkit-animation: c .3s forwards;
+  animation: c .3s forwards;
+}
+
+.fadeOut {
+  -webkit-animation: d .3s forwards;
+  animation: d .3s forwards
+}
+
+@keyframes c {
+  0% {
+    opacity: 0
+  }
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes d {
+  0% {
+    opacity: 1
+  }
+  to {
+    opacity: 0
+  }
 }

@@ -26,4 +26,10 @@ exports.main = async (event, context) => {
       }),
     }
   })
+
+  const updated_menu = await db.collection('user-menus').doc(
+    `program_file_menu_` + user_openid
+  ).get()
+
+  return updated_menu
 }
