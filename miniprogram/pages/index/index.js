@@ -65,7 +65,7 @@ Page({
   },
 
   delete: function () {
-    console.log(this.data.menu)
+    // console.log(this.data.menu)
     wx.cloud.callFunction({
       name: 'deleteFile',
       data: {
@@ -73,7 +73,7 @@ Page({
       },
       success: res => {
         console.log(res);
-        this.getUserMenu();
+        this.updateUserMenu(res.result.data.menu);
       },
       fail: error => {
         console.log('Cloud deleteFile failed', error)
