@@ -37,7 +37,7 @@ exports.main = async (event, context) => {
 }
 
 function getLanguageAndGrammar(file_extension, prism){
-  let language = ""
+  let language = "clike"
   let grammar = {}
   switch(file_extension){
     case "c":
@@ -61,7 +61,7 @@ function getLanguageAndGrammar(file_extension, prism){
       grammar = prism.languages.java
       break
     case "html":
-      langauage = "markup"
+      language = "markup"
       grammar = prism.languages.markup
       break
     case "JSON":
@@ -70,7 +70,7 @@ function getLanguageAndGrammar(file_extension, prism){
       grammar = prism.languages.json
       break
     default:
-      langauge = "clike"
+      language = "clike"
       grammar = prism.languages.clike
   }
 
