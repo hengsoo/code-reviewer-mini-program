@@ -18,7 +18,9 @@ exports.main = async (event, context) => {
       .update({
         data: {
           recent_menu: db.command.addToSet({
-            file_name: file_name,
+            /*file_name: file_name,
+            file_id: file_id,
+            language: language,*/
             file_id: file_id,
             language: language,
           })
