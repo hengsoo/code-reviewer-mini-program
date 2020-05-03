@@ -11,6 +11,7 @@ Page({
 
   onLoad: function () {
     this.getUserMenu()
+    // this.getUserRecentMenu()
   },
 
   getUserMenu: function () {
@@ -20,6 +21,7 @@ Page({
       data: {},
       success: res => {
         this.updateUserMenu(res.result.data.menu)
+        this.updateUserRecentMenu(res.result.data.recent_menu)
         console.log("user menu updated")
       },
       fail: error => {
@@ -37,6 +39,17 @@ Page({
         menu: new_menu
       })
     }
+  },
+
+  updateUserRecentMenu: function(new_recent_menu) {
+    new_recent_menu = new_recent_menu.reverse()
+
+    if (new_recent_menu){
+      this.setData({
+        recent_menu: new_recent_menu
+      })
+    }
+    console.log(this.data.recent_menu)
   },
 
   moreAction: function (e) {
@@ -57,7 +70,8 @@ Page({
       const current_menu_index = this.data.current_menu_index;
       return {
         title: '分享代码 ' + this.data.menu[current_menu_index].file_name,
-        path: 'pages/code-view/code-view?file_id=' + this.data.menu[current_menu_index].file_id,
+        path: 'pages/code-view/code-view?file_id=' + this.data.menu[current_menu_index].file_id
+         + '&file_name=' + this.data.menu[current_menu_index].file_name,
       }
     }
     else{

@@ -42,7 +42,6 @@ Page({
 
   displayCodeAndReviews: function() {
     console.log('Getting program file: ');
-    console.log(this.data.file_id);
 
     wx.cloud.callFunction({
       name: 'getProgramFile',
@@ -59,7 +58,22 @@ Page({
             url: '../index/index',
           })
         }
-
+        if (res.result.data._openid != app.globalData.openid){
+          wx.cloud.callFunction({
+            name: 'updateUserRecentMenu',
+            data:{
+              file_id: this.data.file_id,
+              file_name: this.data.file_name,
+              file_openid: res.result.data._openid,
+              language: res.result.data.language,
+            },
+            fail: error => {
+              console.error('cloud updataUserRecentMenu failed', error);
+            }
+          })
+          
+        }
+        
         const program_file_code = res.result.data.code;
         const program_file_reviews = res.result.data.reviews;
 
@@ -139,6 +153,14 @@ Page({
         }
       })
 
+    }
+  },
+
+  onShareAppMessage: function (e) {
+    return {
+      title: '分享代码 ' + this.data.file_name,
+      path: 'pages/code-view/code-view?file_id=' + this.data.file_id
+      + '&file_name=' + this.data.file_name,
     }
   }
 

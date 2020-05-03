@@ -26,7 +26,8 @@ exports.main = async (event, context) => {
         _id : menu_id,
         _openid : user_openid,
         created_at: new Date(),
-        menu: []
+        menu: [],
+        recent_menu: [],
       }
     })
     console.log("New menu created.")
