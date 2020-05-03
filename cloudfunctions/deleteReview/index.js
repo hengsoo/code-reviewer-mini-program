@@ -6,13 +6,15 @@ cloud.init({
 
 const db = cloud.database()
 
+// TODO: Remove empty reviews line
 exports.main = async (event, context) => {
 
   const file_id = event.file_id
   const review_id = event.review_id
   const line_number = review_id.split('_')[1]
   
-  console.log("delete review")
+  console.log("Delete review: ", review_id)
+
   const delete_target = {}
   const key = "reviews." + line_number
   // Remove review which has review_id
