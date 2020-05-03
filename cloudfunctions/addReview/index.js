@@ -54,13 +54,17 @@ exports.main = async (event, context) => {
 
 async function addReviewEntry(user_openid, file_id, line_number, 
   author_name, author_avatar_url, type, highlighted_review_content){
+
   console.log("Add Review entry")
+  // Review id
+  const review_id = type + "_" + line_number + "_" + Date.now() + "_" + user_openid
+
   let review_data = {}
   // Create line number key
   const key = 'reviews.' + line_number
   review_data[key] = db.command.push(
       {
-        _id: type + "_" + Date.now() + "_" + user_openid,
+        _id: review_id,
         author_openid: user_openid,
         author_name: author_name,
         author_avatar_url: author_avatar_url,
