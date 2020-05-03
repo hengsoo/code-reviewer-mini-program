@@ -9,7 +9,7 @@ Page({
     current_menu_index: 0,
   },
 
-  onLoad: function() {
+  onLoad: function () {
     this.getUserMenu()
   },
 
@@ -52,16 +52,25 @@ Page({
     })
   },
 
-  onShareAppMessage: function () {
-    const current_menu_index = this.data.current_menu_index;
-    return {
-      title: '分享代码 ' + this.data.menu[current_menu_index].file_name,
-      path: 'pages/code-view/code-view?file_id=' + this.data.menu[current_menu_index].file_id,
+  onShareAppMessage: function (e) {
+    if (e.from == 'button') {
+      const current_menu_index = this.data.current_menu_index;
+      return {
+        title: '分享代码 ' + this.data.menu[current_menu_index].file_name,
+        path: 'pages/code-view/code-view?file_id=' + this.data.menu[current_menu_index].file_id,
+      }
+    }
+    else{
+      // e.from == 'menu'
+      return {
+        title: '代码阅读器',
+        path: 'pages/index/index',
+      }
     }
   },
   // TODO: renameFile
   renameFile: function () {
-    
+
   },
 
   deleteFile: function () {
@@ -80,7 +89,7 @@ Page({
       },
     })
   },
-  
+
   addFile: function () {
     let input_file_content = ""
     let input_file_name = ""

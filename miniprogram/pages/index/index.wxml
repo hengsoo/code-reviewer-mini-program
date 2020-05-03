@@ -1,6 +1,7 @@
 <!--index.wxml-->
 <!-- header -->
 <include src="../../components/layout/header/header.wxml" />
+<include src="../../components/weui.wxss" />
 
 <view class="container">
 
@@ -17,6 +18,8 @@
 			<image src="/images/index/icon_more.png" mode="widthFix" class="icon-more"></image>
 		</view>
 	</navigator>
+
+	<mp-cells title="最近文件" class="fill-width"></mp-cells>
 
 	<button class="add-button" hover-class="add-button-hover" bindtap="addFile">+</button>
 
