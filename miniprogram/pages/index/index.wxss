@@ -11,6 +11,14 @@ mp-cell:first-child>view{
  border-bottom: 1rpx solid rgba(0,0,0,0.1);
 }
 
+.index-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding-bottom: 100px;
+}
+
 .cell-icon{
   margin-right: 16px;
   margin-left: 16px;

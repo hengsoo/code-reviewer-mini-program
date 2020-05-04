@@ -38,6 +38,7 @@ exports.main = async (event, context) => {
       }
     })
   }
+  // limit recent_menu to 5 record
   let user = await db.collection('user-menus').doc(menu_id).get()
   if (user.data.recent_menu.length > 5){
     await db.collection('user-menus').doc(menu_id)

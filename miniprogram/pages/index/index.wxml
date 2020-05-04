@@ -2,10 +2,10 @@
 <!-- header -->
 <include src="../../components/layout/header/header.wxml" />
 
-<view class="container">
+<view class="index-container">
 
   <!-- TODO: remove mp-cell -->
-	<mp-cells title="最近文件" class="fill-width"></mp-cells>
+	<view class="weui-cells__title">最近文件</view>
 
 	<navigator wx:for="{{recent_menu}}" wx:key="file_id" class="list-card fill-width" link hover 
 	url="../code-view/code-view?file_id={{item.file_id}}&file_name={{ item.file_name }}">
@@ -15,7 +15,7 @@
 		</view>
 	</navigator>
 
-	<mp-cells title="我的文件" class="fill-width"></mp-cells>
+	<view class="weui-cells__title">我的文件</view>
   
 	<navigator wx:for="{{menu}}" wx:key="file_id" class="list-card fill-width" link hover 
 	url="../code-view/code-view?file_id={{item.file_id}}&file_name={{ item.file_name }}">
