@@ -69,6 +69,14 @@ function getLanguageAndGrammar(file_extension, prism){
       language = "json"
       grammar = prism.languages.json
       break
+    case "ino":
+      language = "arduino"
+      grammar = prism.languages.arduino
+      break
+    case "sh":
+      language = "bash"
+      grammar = prism.languages.bash
+      break
     case "cs":
       language = "csharp"
       grammar = prism.langauages.csharp
@@ -147,6 +155,10 @@ function getLanguageAndGrammar(file_extension, prism){
     case "vhd":
       language = "vhdl"
       grammar = prism.langauages.vhdl
+      break
+    case "vb":
+      language = "visual-basic"
+      grammar = prism.langauages.visual-basic
       break
     default:
       language = "clike"
