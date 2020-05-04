@@ -43,13 +43,16 @@ Page({
 
   updateUserRecentMenu: function(new_recent_menu) {
     new_recent_menu = new_recent_menu.reverse()
-
+    for (let i = 0; i < new_recent_menu.length; i++) {
+      new_recent_menu[i].file_name = (new_recent_menu[i].file_id.match(/.+(?=_\d+_)/))[0];
+    }
+    console.log(new_recent_menu)
+    
     if (new_recent_menu){
       this.setData({
         recent_menu: new_recent_menu
       })
     }
-    console.log(this.data.recent_menu)
   },
 
   moreAction: function (e) {

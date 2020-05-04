@@ -12,15 +12,12 @@ exports.main = async (event, context) => {
   const file_openid = event.file_openid
   const menu_id = `program_file_menu_` + user_openid
   const language = event.language
-  console.log(file_name)
+  
   try {
     await db.collection('user-menus').doc(menu_id)
       .update({
         data: {
           recent_menu: db.command.addToSet({
-            /*file_name: file_name,
-            file_id: file_id,
-            language: language,*/
             file_id: file_id,
             language: language,
           })
@@ -35,7 +32,6 @@ exports.main = async (event, context) => {
         created_at: new Date(),
         menu: [],
         recent_menu: [{
-          file_name: file_name,
           file_id: file_id,
           language: language
         }],
