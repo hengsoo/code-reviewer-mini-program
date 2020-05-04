@@ -9,7 +9,7 @@ Page({
     current_menu_index: 0,
   },
 
-  onLoad: function () {
+  onShow: function () {
     this.getUserMenu()
   },
 
@@ -42,13 +42,6 @@ Page({
 
   updateUserRecentMenu: function(new_recent_menu) {
     new_recent_menu = new_recent_menu.reverse()
-
-    // add file_name in the local recent_menu
-    for (let i = 0; i < new_recent_menu.length; i++) {
-      new_recent_menu[i].file_name = (new_recent_menu[i].file_id.match(/.+(?=_\d+_)/))[0];
-    }
-    
-    console.log(new_recent_menu)
     
     if (new_recent_menu){
       this.setData({
