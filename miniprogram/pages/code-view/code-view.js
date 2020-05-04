@@ -123,9 +123,11 @@ Page({
   launchReviewActionSheet(event){
     const review_author_openid = event.currentTarget.dataset.reviewAuthorOpenid
     const review_id = event.currentTarget.dataset.reviewId
+    const file_author_openid = this.data.file_id
 
-    // Check if user is review's author
-    if ( review_author_openid === app.globalData.openid){
+    // Check if user is review's author or file owner
+    if ( review_author_openid === app.globalData.openid || 
+         file_author_openid === app.globalData.openid){
       this.setData({
         show_review_action_sheet: true,
         action_sheet_review_id: review_id
