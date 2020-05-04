@@ -33,6 +33,7 @@ page {
   width: 100%;
   align-items: center;
   padding: 10px 15px; 
+  padding-left: 0;
   background-color: #fff;
   border-top: 1rpx solid rgba(0, 0, 0, .1);
 }
@@ -134,11 +135,12 @@ page {
 .weui-hidden {
 	visibility: hidden;
   opacity: 0;
-  height: 0 !important
+  height: 0 !important;
+  margin: 0 !important;
 }
 
 .menu-title{
-  margin: 20rpx 0;
+  margin-top: 20rpx;
   padding-left: 50rpx;
   padding-bottom: 5rpx;
 	color: rgba(0, 0, 0, .5);
