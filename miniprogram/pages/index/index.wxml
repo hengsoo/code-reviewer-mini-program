@@ -5,6 +5,16 @@
 <view class="container">
 
   <!-- TODO: remove mp-cell -->
+	<mp-cells title="最近文件" class="fill-width"></mp-cells>
+
+	<navigator wx:for="{{recent_menu}}" wx:key="file_id" class="list-card fill-width" link hover 
+	url="../code-view/code-view?file_id={{item.file_id}}&file_name={{ item.file_name }}">
+		<image class="cell-icon" src="../../images/index/language-{{item.language}}.png"></image>
+		<view class="list-card__info">
+			<view class="list-card__info-title font-black-34">{{item.file_name}}</view>
+		</view>
+	</navigator>
+
 	<mp-cells title="我的文件" class="fill-width"></mp-cells>
   
 	<navigator wx:for="{{menu}}" wx:key="file_id" class="list-card fill-width" link hover 
@@ -15,16 +25,6 @@
 		</view>
 		<view class="more-action" data-type="create" catchtap="moreAction" data-operation="{{index}}" hover-stop-propagation>
 			<image src="/images/index/icon_more.png" mode="widthFix" class="icon-more"></image>
-		</view>
-	</navigator>
-
-	<mp-cells title="最近文件" class="fill-width"></mp-cells>
-
-	<navigator wx:for="{{recent_menu}}" wx:key="file_id" class="list-card fill-width" link hover 
-	url="../code-view/code-view?file_id={{item.file_id}}&file_name={{ item.file_name }}">
-		<image class="cell-icon" src="../../images/index/language-{{item.language}}.png"></image>
-		<view class="list-card__info">
-			<view class="list-card__info-title font-black-34">{{item.file_name}}</view>
 		</view>
 	</navigator>
 

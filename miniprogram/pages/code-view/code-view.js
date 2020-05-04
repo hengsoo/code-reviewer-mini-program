@@ -29,7 +29,7 @@ Page({
     wx.setNavigationBarTitle({
       title: this.data.file_name
     })
-
+    // call cloud funcion in order
     this.displayCodeAndReviews().then(result=>{
       this.updataUserRecentMenu();
     })
@@ -87,7 +87,6 @@ Page({
 
   updataUserRecentMenu: function() {
     if (this.data.file_openid != app.globalData.openid){
-      console.log(this.data.language)
       wx.cloud.callFunction({
         name: 'updateUserRecentMenu',
         data:{
