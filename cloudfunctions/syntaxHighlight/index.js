@@ -93,10 +93,6 @@ function getLanguageAndGrammar(file_extension, prism){
       language = "markdown"
       grammar = prism.langauages.markdown
       break
-    case "dtl":
-      language = "django"
-      grammar = prism.langauages.django
-      break
     case "php":
     case "php4":
     case "php5":
