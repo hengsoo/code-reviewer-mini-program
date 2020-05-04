@@ -7,10 +7,6 @@ page {
   justify-content: flex-start;
 }
 
-mp-cell:first-child>view{
- border-bottom: 1rpx solid rgba(0,0,0,0.1);
-}
-
 .index-container{
   display: flex;
   flex-direction: column;
@@ -133,4 +129,43 @@ mp-cell:first-child>view{
   to {
     opacity: 0
   }
+}
+
+.weui-hidden {
+	visibility: hidden;
+  opacity: 0;
+  height: 0 !important
+}
+
+.menu-title{
+  margin: 20rpx 0;
+  padding-left: 50rpx;
+  padding-bottom: 5rpx;
+	color: rgba(0, 0, 0, .5);
+  font-size: 14px;
+  text-align: left;
+  width: 100%;
+  border-bottom: 2px solid rgba(0, 0, 0, .1);
+}
+
+.separator{
+  width: 90%;  
+  height: 1px;
+  text-align: center;
+  font-size: 24rpx;
+  background: rgba(0, 0, 0, .1);
+  margin-top: 15px;
+  margin-bottom: 22px;
+}
+
+.separator-title {
+  font-size: 14px;
+  color: gray
+}
+
+.separator .separator-title{
+  position: relative;
+  top: -8px;
+  background: #f6f6f6;
+  padding: 0px 10px;
 }
