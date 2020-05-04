@@ -9,8 +9,9 @@ Page({
     current_menu_index: 0,
   },
 
-  onLoad: function() {
+  onLoad: function () {
     this.getUserMenu()
+    // this.getUserRecentMenu()
   },
 
   getUserMenu: function () {
@@ -20,6 +21,7 @@ Page({
       data: {},
       success: res => {
         this.updateUserMenu(res.result.data.menu)
+        this.updateUserRecentMenu(res.result.data.recent_menu)
         console.log("user menu updated")
       },
       fail: error => {
@@ -39,6 +41,21 @@ Page({
     }
   },
 
+  updateUserRecentMenu: function(new_recent_menu) {
+    new_recent_menu = new_recent_menu.reverse()
+    // add file_name in the local recent_menu
+    for (let i = 0; i < new_recent_menu.length; i++) {
+      new_recent_menu[i].file_name = (new_recent_menu[i].file_id.match(/.+(?=_\d+_)/))[0];
+    }
+    console.log(new_recent_menu)
+    
+    if (new_recent_menu){
+      this.setData({
+        recent_menu: new_recent_menu
+      })
+    }
+  },
+
   moreAction: function (e) {
     this.setData({
       show_more_action: true,
@@ -52,16 +69,26 @@ Page({
     })
   },
 
-  onShareAppMessage: function () {
-    const current_menu_index = this.data.current_menu_index;
-    return {
-      title: '分享代码 ' + this.data.menu[current_menu_index].file_name,
-      path: 'pages/code-view/code-view?file_id=' + this.data.menu[current_menu_index].file_id,
+  onShareAppMessage: function (e) {
+    if (e.from == 'button') {
+      const current_menu_index = this.data.current_menu_index;
+      return {
+        title: '分享代码 ' + this.data.menu[current_menu_index].file_name,
+        path: 'pages/code-view/code-view?file_id=' + this.data.menu[current_menu_index].file_id
+         + '&file_name=' + this.data.menu[current_menu_index].file_name,
+      }
+    }
+    else{
+      // e.from == 'menu'
+      return {
+        title: '代码阅读器',
+        path: 'pages/index/index',
+      }
     }
   },
   // TODO: renameFile
   renameFile: function () {
-    
+
   },
 
   deleteFile: function () {
@@ -80,7 +107,7 @@ Page({
       },
     })
   },
-  
+
   addFile: function () {
     let input_file_content = ""
     let input_file_name = ""

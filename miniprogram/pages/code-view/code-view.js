@@ -4,7 +4,9 @@ Page({
   data: {
     // Program file data
     file_id: null,
-    file_name:"",
+    file_openid: '',
+    file_name: "",
+    language: "",
     code: [],
     reviews: [],
     // User info
@@ -27,8 +29,10 @@ Page({
     wx.setNavigationBarTitle({
       title: this.data.file_name
     })
-
-    this.displayCodeAndReviews();
+    // call cloud funcion in order
+    this.displayCodeAndReviews().then(result=>{
+      this.updataUserRecentMenu();
+    })
   },
 
   onShow: function(){
@@ -42,39 +46,61 @@ Page({
 
   displayCodeAndReviews: function() {
     console.log('Getting program file: ');
-    console.log(this.data.file_id);
+    return new Promise(resolve => {
+      wx.cloud.callFunction({
+        name: 'getProgramFile',
+        data:{
+          file_id: this.data.file_id,
+        },
+        
+        // Get programFile sucess
+        success: res => {
 
-    wx.cloud.callFunction({
-      name: 'getProgramFile',
-      data:{
-        file_id: this.data.file_id,
-      },
-      
-      // Get programFile sucess
-      success: res => {
+          if( Object.keys(res.result).length === 0 ){
+            console.log("Empty result")
+            wx.redirectTo({
+              url: '../index/index',
+            })
+          }
+          
+          const program_file_openid = res.result.data._openid;
+          const program_file_code = res.result.data.code;
+          const program_file_reviews = res.result.data.reviews;
+          const program_language = res.result.data.language;
 
-        if( Object.keys(res.result).length === 0 ){
-          console.log("Empty result")
-          wx.redirectTo({
-            url: '../index/index',
+          this.setData({
+            file_openid: program_file_openid,
+            language: program_language,
+            code: program_file_code,
+            reviews: program_file_reviews,
           })
+          return resolve()
+        },
+        // Get programFile failed
+        fail: error =>{
+          console.error('Cloud getProgramFile failed', error)
         }
+      }) 
+    })
+    
+  },
 
-        const program_file_code = res.result.data.code;
-        const program_file_reviews = res.result.data.reviews;
-
-        this.setData({
-          code: program_file_code,
-          reviews: program_file_reviews
-        })
-
-      },
-
-      // Get programFile failed
-      fail: error =>{
-        console.error('Cloud getProgramFile failed', error)
-      }
-    }) 
+  updataUserRecentMenu: function() {
+    if (this.data.file_openid != app.globalData.openid){
+      wx.cloud.callFunction({
+        name: 'updateUserRecentMenu',
+        data:{
+          file_id: this.data.file_id,
+          file_name: this.data.file_name,
+          file_openid: this.data.file_openid,
+          language: this.data.language,
+        },
+        fail: error => {
+          console.error('cloud updataUserRecentMenu failed', error);
+        }
+      })
+      
+    }
   },
 
   launchReviewInput(event){
@@ -139,6 +165,14 @@ Page({
         }
       })
 
+    }
+  },
+
+  onShareAppMessage: function (e) {
+    return {
+      title: '分享代码 ' + this.data.file_name,
+      path: 'pages/code-view/code-view?file_id=' + this.data.file_id
+      + '&file_name=' + this.data.file_name,
     }
   }
 
