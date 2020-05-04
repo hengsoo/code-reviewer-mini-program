@@ -69,6 +69,93 @@ function getLanguageAndGrammar(file_extension, prism){
       language = "json"
       grammar = prism.languages.json
       break
+    case "ino":
+      language = "arduino"
+      grammar = prism.languages.arduino
+      break
+    case "sh":
+      language = "bash"
+      grammar = prism.languages.bash
+      break
+    case "cs":
+      language = "csharp"
+      grammar = prism.langauages.csharp
+      break
+    case "go":
+      language = "go"
+      grammar = prism.langauages.go
+      break
+    case "css":
+      language = "css"
+      grammar = prism.langauages.css
+      break
+    case "md":
+      language = "markdown"
+      grammar = prism.langauages.markdown
+      break
+    case "php":
+    case "php4":
+    case "php5":
+      language = "php"
+      grammar = prism.langauages.php
+      break
+    case "cl":
+      language = "opencl"
+      grammar = prism.langauages.opencl
+      break
+    case "m":
+      language = "matlab"
+      grammar = prism.langauages.matlab
+      break
+    case "tex":
+    case "latex":
+      language = "latex"
+      grammar = prism.langauages.latex
+      break
+    case "kt":
+      language = "kotlin"
+      grammar = prism.langauages.kotlin
+      break
+    case "r":
+      language = "r"
+      grammar = prism.langauages.r
+      break
+    case "jsx":
+      language = "jsx"
+      grammar = prism.langauages.jsx
+      break
+    case "rb":
+      language = "ruby"
+      grammar = prism.langauages.ruby
+      break
+    case "rs":
+      language = "rust"
+      grammar = prism.langauages.rust
+      break
+    case "scss":
+      language = "sass"
+      grammar = prism.langauages.sass
+      break
+    case "sql":
+      language = "sql"
+      grammar = prism.langauages.sql
+      break
+    case "swift":
+      language = "swift"
+      grammar = prism.langauages.swift
+      break
+    case "v":
+      language = "verilog"
+      grammar = prism.langauages.verilog
+      break
+    case "vhd":
+      language = "vhdl"
+      grammar = prism.langauages.vhdl
+      break
+    case "vb":
+      language = "visual-basic"
+      grammar = prism.langauages.visual-basic
+      break
     default:
       language = "clike"
       grammar = prism.languages.clike
