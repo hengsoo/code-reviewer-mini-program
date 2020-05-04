@@ -1,5 +1,5 @@
 /* PrismJS 1.20.0
-https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript+git+glsl+go */
+https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript+arduino+asm6502+bash+basic+c+csharp+cpp+go+java+json+kotlin+latex+markdown+matlab+opencl+python+r+jsx+ruby+rust+sass+sql+swift+verilog+vhdl+visual-basic */
 /**
  * okaidia theme for JavaScript, CSS and HTML
  * Loosely based on Monokai textmate theme by http://www.monokai.nl/
