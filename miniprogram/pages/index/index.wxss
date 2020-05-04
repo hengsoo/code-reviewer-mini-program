@@ -13,6 +13,7 @@ page {
   align-items: center;
   box-sizing: border-box;
   padding-bottom: 100px;
+  overflow-x: hidden;
 }
 
 .cell-icon{
