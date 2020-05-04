@@ -61,7 +61,8 @@
 
 			<view class="weui-actionsheet__menu">
 				<button class="actionsheet-button" open-type="share">分享</button>
-				<view class="weui-actionsheet__cell" bindtap="renameFile">重命名</view>
+				<!-- TODO: add rename function -->
+				<!-- <view class="weui-actionsheet__cell" bindtap="renameFile">重命名</view> -->
 				<view class="weui-actionsheet__cell weui-actionsheet__cell_warn" bindtap="deleteFile">删除</view>
 			</view>
 
