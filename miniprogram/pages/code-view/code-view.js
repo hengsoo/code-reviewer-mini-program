@@ -1,5 +1,7 @@
 const app = getApp()
 
+// TODO: remove item from usermenu and recent menu if file doesn't exixts
+
 Page({
   data: {
     // Program file data
