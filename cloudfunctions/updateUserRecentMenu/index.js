@@ -9,20 +9,34 @@ exports.main = async (event, context) => {
   const user_openid = cloud.getWXContext().OPENID
   const file_id = event.file_id
   const file_name = event.file_name
-  const file_openid = event.file_openid
   const menu_id = `program_file_menu_` + user_openid
   const language = event.language
   
+  
   try {
-    await db.collection('user-menus').doc(menu_id)
+    // judge whether element unique
+    let new_element = {
+      file_id: file_id,
+      file_name: file_name,
+      language: language,
+    }
+    let unique_flag = false
+    let old_recent_menu = await db.collection('user-menus').doc(menu_id).get()
+    old_recent_menu = old_recent_menu.data.recent_menu
+    for (let i = 0; i < old_recent_menu.length; i++) {
+      if(JSON.stringify(old_recent_menu[i]) === JSON.stringify(new_element)){
+        unique_flag = true
+      }
+    }
+    // if unique element
+    if (!unique_flag){
+      await db.collection('user-menus').doc(menu_id)
       .update({
         data: {
-          recent_menu: db.command.addToSet({
-            file_id: file_id,
-            language: language,
-          })
+          recent_menu: db.command.push(new_element)
         }
       })
+    }
   } catch (error) {
     console.log("User menu not found. Create New.")
     await db.collection('user-menus').add({
@@ -33,6 +47,7 @@ exports.main = async (event, context) => {
         menu: [],
         recent_menu: [{
           file_id: file_id,
+          file_name: file_name,
           language: language
         }],
       }
