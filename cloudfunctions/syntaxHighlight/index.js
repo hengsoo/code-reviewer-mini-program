@@ -79,82 +79,82 @@ function getLanguageAndGrammar(file_extension, prism){
       break
     case "cs":
       language = "csharp"
-      grammar = prism.langauages.csharp
+      grammar = prism.languages.csharp
       break
     case "go":
       language = "go"
-      grammar = prism.langauages.go
+      grammar = prism.languages.go
       break
     case "css":
       language = "css"
-      grammar = prism.langauages.css
+      grammar = prism.languages.css
       break
     case "md":
       language = "markdown"
-      grammar = prism.langauages.markdown
+      grammar = prism.languages.markdown
       break
     case "php":
     case "php4":
     case "php5":
       language = "php"
-      grammar = prism.langauages.php
+      grammar = prism.languages.php
       break
     case "cl":
       language = "opencl"
-      grammar = prism.langauages.opencl
+      grammar = prism.languages.opencl
       break
     case "m":
       language = "matlab"
-      grammar = prism.langauages.matlab
+      grammar = prism.languages.matlab
       break
     case "tex":
     case "latex":
       language = "latex"
-      grammar = prism.langauages.latex
+      grammar = prism.languages.latex
       break
     case "kt":
       language = "kotlin"
-      grammar = prism.langauages.kotlin
+      grammar = prism.languages.kotlin
       break
     case "r":
       language = "r"
-      grammar = prism.langauages.r
+      grammar = prism.languages.r
       break
     case "jsx":
       language = "jsx"
-      grammar = prism.langauages.jsx
+      grammar = prism.languages.jsx
       break
     case "rb":
       language = "ruby"
-      grammar = prism.langauages.ruby
+      grammar = prism.languages.ruby
       break
     case "rs":
       language = "rust"
-      grammar = prism.langauages.rust
+      grammar = prism.languages.rust
       break
     case "scss":
       language = "sass"
-      grammar = prism.langauages.sass
+      grammar = prism.languages.sass
       break
     case "sql":
       language = "sql"
-      grammar = prism.langauages.sql
+      grammar = prism.languages.sql
       break
     case "swift":
       language = "swift"
-      grammar = prism.langauages.swift
+      grammar = prism.languages.swift
       break
     case "v":
       language = "verilog"
-      grammar = prism.langauages.verilog
+      grammar = prism.languages.verilog
       break
     case "vhd":
       language = "vhdl"
-      grammar = prism.langauages.vhdl
+      grammar = prism.languages.vhdl
       break
     case "vb":
       language = "visual-basic"
-      grammar = prism.langauages.visual-basic
+      grammar = prism.languages.visual-basic
       break
     default:
       language = "clike"
