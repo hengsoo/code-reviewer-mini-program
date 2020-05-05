@@ -1,4 +1,11 @@
 <!--code-view.wxml-->
+
+<!-- Announcement bar -->
+<view class="announcement {{show_announcement ? 'weui-show' :'weui-hidden'}}">
+	<text>🎉 长按代码可以添加评论哟 🎉</text>
+	<image class="announcement-close-button" bindtap="closeAnnouncement" src="../../images/code-view/close_icon.png"/>
+</view>
+
 <view class="code-container">
 	<table>
 		<block  wx:for="{{code}}" wx:key="index">

@@ -4,6 +4,8 @@ const app = getApp()
 
 Page({
   data: {
+    //Announcement Bar
+    show_announcement: true,
     // Program file data
     file_id: null,
     file_openid: '',
@@ -46,6 +48,12 @@ Page({
         user_avatar_url: app.globalData.user_info.avatarUrl
       });
     }
+  },
+
+  closeAnnouncement: function(){
+    this.setData({
+      show_announcement: false
+    })
   },
 
   displayCodeAndReviews: function() {

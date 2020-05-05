@@ -133,12 +133,7 @@ page {
   }
 }
 
-.weui-hidden {
-	visibility: hidden;
-  opacity: 0;
-  height: 0 !important;
-  margin: 0 !important;
-}
+
 
 .menu-title{
   margin-top: 20rpx;

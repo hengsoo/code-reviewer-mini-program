@@ -8,6 +8,14 @@
   box-sizing: border-box;
 } 
 
+.weui-hidden {
+	visibility: hidden;
+  opacity: 0;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .fill-width{
   width: 100%;
 }
