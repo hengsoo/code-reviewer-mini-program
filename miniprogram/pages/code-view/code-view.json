@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "review-input" : "../../components/review-input/review-input",
-    "mp-actionSheet": "../../components/weui/actionsheet/actionsheet"
+    "mp-actionSheet": "../../components/weui/actionsheet/actionsheet",
+    "authorize-user-info" : "../../components/authorize-user-info/authorize-user-info"
   }
 }

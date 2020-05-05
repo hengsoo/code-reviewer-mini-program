@@ -1,5 +1,4 @@
 {
   "usingComponents": {
-    "mp-halfScreenDialog": "../../components/weui/half-screen-dialog/half-screen-dialog"
   }
 }
