@@ -80,10 +80,9 @@ Page({
       }
     }
   },
-  // TODO: renameFile
-  renameFile: function () {
 
-  },
+  // TODO: renameFile
+  renameFile: function () {},
 
   deleteFile: function () {
     // console.log(this.data.menu)

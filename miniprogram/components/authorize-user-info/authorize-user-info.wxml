@@ -1,4 +1,4 @@
-<view class="{{show_dialog ? 'weui-show' :'weui-hidden'}}"> 
+<view class="{{show ? 'weui-show' :'weui-hidden'}}"> 
   <view class="weui-mask init" bindtap="close" data-type="tap"></view>
 
   <view class="weui-half-screen-dialog">
@@ -8,7 +8,7 @@
       </view>
       <view class="weui-half-screen-dialog__hd__main">
         <block>
-          <text class="weui-half-screen-dialog__title">申请获得</text>
+          <text class="weui-half-screen-dialog__title">登入后才能评论</text>
         </block>
       </view>
     </view>

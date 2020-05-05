@@ -19,7 +19,9 @@ Page({
     review_input_line_number: 0,
     // Review actionsheet data
     show_review_action_sheet: false,
-    review_action_sheet_review_id : ""
+    review_action_sheet_review_id : "",
+    // Authorize getUserInfo
+    show_login_button : false
   },
 
   onLoad: function(options) {
@@ -48,7 +50,7 @@ Page({
 
   displayCodeAndReviews: function() {
     console.log('Getting program file: ');
-    return new Promise(resolve => {
+    return new Promise( (resolve, reject) => {
       wx.cloud.callFunction({
         name: 'getProgramFile',
         data:{
@@ -80,7 +82,7 @@ Page({
         },
         // Get programFile failed
         fail: error =>{
-          console.error('Cloud getProgramFile failed', error)
+          return reject('Cloud getProgramFile failed', error)
         }
       }) 
     })
@@ -106,6 +108,27 @@ Page({
   },
 
   launchReviewInput(event){
+
+    // Get user info if it is null
+    if (app.globalData.user_info == null){
+      console.log("Review requires user login.")
+      this.getUserInfo()
+          // Show review input if success
+          .then( result => {
+            this.showReviewInput(event)
+          })
+          // Hide review input if user is not logged in
+          .catch( error => {
+            return null
+          })
+    }
+    // Else just show the review input
+    else {
+      this.showReviewInput(event)
+    }
+  },
+
+  showReviewInput(event){
     const line_number = event.currentTarget.id
     console.log("Long pressed line ", line_number)
     this.setData({
@@ -172,12 +195,34 @@ Page({
     }
   },
 
-  onShareAppMessage: function (e) {
+  onShareAppMessage: function (event) {
     return {
       title: '分享代码 ' + this.data.file_name,
       path: 'pages/code-view/code-view?file_id=' + this.data.file_id
       + '&file_name=' + this.data.file_name,
     }
-  }
+  },
+
+  getUserInfo: function(event) {
+    return new Promise( (resolve, reject) => {
+      // Get user info
+      wx.getUserInfo({
+        success: res => {
+          console.log("getUserInfo success")
+          // Add userInfo to global data
+          app.globalData.user_info = res.userInfo
+          return resolve()
+        },
+        fail: error =>{
+          console.error("getUserInfo failed: ", error)
+          this.setData({
+            show_login_button: true
+          })
+          return reject()
+        }
+      })
+
+    })
+  },
 
 })

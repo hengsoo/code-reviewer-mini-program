@@ -1,7 +1,4 @@
 <!--code-view.wxml-->
-<!-- header -->
-<include src="../../components/layout/header/header.wxml"/>
-
 <view class="code-container">
 	<table>
 		<block  wx:for="{{code}}" wx:key="index">
@@ -49,6 +46,7 @@ fileId="{{ file_id }}" bindupdateReviews="updateReviews" />
 
 <!-- Review action sheet -->
 <mp-actionSheet bindactiontap="reviewActionSheetTap" show="{{show_review_action_sheet}}" 
-	actions="{{ [{ text: '删除评论', type: 'warn', value: 'delete' }] }}" title="评论操作"
->
-</mp-actionSheet>
+	actions="{{ [{ text: '删除评论', type: 'warn', value: 'delete' }] }}" title="评论操作"/>
+
+<authorize-user-info show="{{ show_login_button }}" bindloginSuccess="onLoginSuccess"/>
+

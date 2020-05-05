@@ -1,6 +1,4 @@
 <!--index.wxml-->
-<!-- header -->
-<include src="../../components/layout/header/header.wxml" />
 
 <view class="index-container">
 
