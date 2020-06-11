@@ -15,14 +15,14 @@
 
     <view class="weui-half-screen-dialog__bd">
       <block>
-        <text class="weui-half-screen-dialog__desc">获得您的公开信息</text>
+        <text class="weui-half-screen-dialog__desc">获取您的公开信息</text>
         <view class="weui-half-screen-dialog__tips">昵称、头像、地区及性别</view>
       </block>
     </view>
 
     <view class="weui-half-screen-dialog__ft">
       <block>
-        <button type="primary" class="weui-btn" open-type="getUserInfo">同意</button>
+        <button type="primary" class="weui-btn" open-type="getUserInfo">前去授权</button>
       </block> 
     </view>
 
