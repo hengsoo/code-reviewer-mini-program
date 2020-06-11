@@ -18,7 +18,7 @@ exports.main = async (event, context) => {
 
   try {
      // Filter file extension
-     const file_extension = input_file_name.split(".").pop()
+     const file_extension = file_name.split(".").pop()
      const forbidden_file_extensions =  ["aid","cda","mid","midi","mp3","mpa","ogg","wav","wma","wpl","7z",
      "arj","deb","pkg","rar","rpm","gz","z","zip","tar","bin","dmg","iso","toast","vcd","mdb","email",
      "eml","emlx","apk","exe","msi","ttf","fnt","fon","otf","ai","bmp","gif","ico","jpeg","jpg","png",
