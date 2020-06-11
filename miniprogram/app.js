@@ -16,9 +16,14 @@ App({
     this.globalData = {
       // user_info contains avatarUrl, city, country, gender, language, nickName, province
       user_info: null,
-      openid: null
+      openid: null,
+      forbidden_file_extensions: ["aid","cda","mid","midi","mp3","mpa","ogg","wav","wma","wpl","7z",
+      "arj","deb","pkg","rar","rpm","gz","z","zip","tar","bin","dmg","iso","toast","vcd","mdb","email",
+      "eml","emlx","apk","exe","msi","ttf","fnt","fon","otf","ai","bmp","gif","ico","jpeg","jpg","png",
+      "ps","psd","svg","tif","tiff","key","odp","pps","ppt","pptx","ods","xls","xlsm","xlsx","avi","mp4",
+      "mov","mpg","wmv","mkv","flx","doc","docx","odt","pdf","rtf","wpd"]
     }
-
+    
     this.setOpenID()
   },
 

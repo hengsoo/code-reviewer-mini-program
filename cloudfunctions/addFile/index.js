@@ -17,6 +17,20 @@ exports.main = async (event, context) => {
   console.log("Add new file: ", file_id)
 
   try {
+     // Filter file extension
+     const file_extension = input_file_name.split(".").pop()
+     const forbidden_file_extensions =  ["aid","cda","mid","midi","mp3","mpa","ogg","wav","wma","wpl","7z",
+     "arj","deb","pkg","rar","rpm","gz","z","zip","tar","bin","dmg","iso","toast","vcd","mdb","email",
+     "eml","emlx","apk","exe","msi","ttf","fnt","fon","otf","ai","bmp","gif","ico","jpeg","jpg","png",
+     "ps","psd","svg","tif","tiff","key","odp","pps","ppt","pptx","ods","xls","xlsm","xlsx","avi","mp4",
+     "mov","mpg","wmv","mkv","flx","doc","docx","odt","pdf","rtf","wpd"]
+
+     if (forbidden_file_extensions.includes(file_extension)){
+       console.log("Invalid input file extension: ", file_name)
+       throw Error('Invalid input file extension.')
+     }
+
+    // Syntax Highlight
     let { highlighted_content, language } = 
       (await cloud.callFunction({
           name: 'syntaxHighlight',
