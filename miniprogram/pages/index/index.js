@@ -85,17 +85,24 @@ Page({
   renameFile: function () {},
 
   deleteFile: function () {
-    // console.log(this.data.menu)
+    // Show loading
+    wx.showLoading({ title: '文件删除中'})
+
     wx.cloud.callFunction({
       name: 'deleteFile',
       data: {
         file_id: this.data.menu[this.data.current_menu_index].file_id,
       },
+
       success: res => {
         console.log(res);
         this.updateUserMenu(res.result.data.menu);
+        wx.hideLoading()
+        this.showSuccessToast("删除成功")
       },
+
       fail: error => {
+        this.showErrorToast("文件删除失败")
         console.log('Cloud deleteFile failed', error)
       },
     })
@@ -111,10 +118,21 @@ Page({
       type: "file",
       success: res => {
         input_file_name = res.tempFiles[0].name
+        // Filter file extension
+        const file_extension = input_file_name.split(".").pop()
+        // Check if file extension is forbidden
+        if (app.globalData.forbidden_file_extensions.includes(file_extension)){
+          this.showErrorToast("文件格式错误")
+          throw Error('Invalid input file extension.')
+        }
+
+        // Show loading
+        wx.showLoading({ title: '文件上传中'})
+          
         // Read file 
         wx.getFileSystemManager().readFile({
-          filePath: res.tempFiles[0].path,
-          encoding: 'utf-8',
+            filePath: res.tempFiles[0].path,
+            encoding: 'utf-8',
 
           success: res => {
             console.log(res)
@@ -127,25 +145,48 @@ Page({
                 file_content: input_file_content
               },
               success: res => {
+                wx.hideLoading()
+                this.showSuccessToast("上传成功")
                 console.log(res)
                 this.updateUserMenu(res.result.data.menu)
                 console.log("Add file user menu updated")
               },
               fail: error => {
+                wx.hideLoading()
+                this.showErrorToast("上传失败")
                 console.error('Cloud addFile failed: ', error)
               }
             })
           },
           // Read file failed
           fali: error => {
+            this.showErrorToast("文件阅读失败")
             console.error("Read file failed: ", error)
           }
         })
       },
+
       // Choose file failed
       fail: error => {
         console.error("Choose file failed:", error)
       }
     })
+  },
+
+  showSuccessToast: function (title){
+    wx.showToast({
+      title: title,
+      icon:'success',
+      duration: 1500
+    })
+  },
+
+  showErrorToast: function (title){
+    wx.showToast({
+      title: title,
+      image: '../../images/index/icon_error.png',
+      duration: 2000
+    })
   }
+  
 })
