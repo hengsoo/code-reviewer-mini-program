@@ -46,6 +46,18 @@ page {
   white-space: nowrap;
 }
 
+.code-comment {
+  background-color: rgba(42, 44, 65, 0.6);
+}
+
+.code-advice {
+  background-color: rgba(43, 64, 64, 0.6);
+}
+
+.code-warning {
+  background-color: rgba(100, 17, 63, 0.6);
+}
+
 .review-comment {
   border-top-color:#dadad9;
   background-color: rgba(42, 44, 65, 0.6);

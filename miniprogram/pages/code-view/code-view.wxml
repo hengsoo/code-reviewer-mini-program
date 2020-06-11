@@ -11,7 +11,8 @@
 		<block  wx:for="{{code}}" wx:key="index">
 		
 			<!-- Code -->
-			<tr id="{{ index + 1 }}" bindlongpress="launchReviewInput">
+			<tr id="{{ index + 1 }}" bindlongpress="launchReviewInput" 
+				class="{{ reviews[index+1] ? 'code-' + reviews[index+1][0].type : '' }}">
 				<th class="head-col">{{index + 1}}</th>
 				<rich-text  
 				 nodes="{{item}}" space="nbsp" class="code" />
