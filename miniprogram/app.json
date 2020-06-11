@@ -8,7 +8,8 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#673bb7",
     "navigationBarTitleText": "代码阅读器",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "pageOrientation" : "auto"
   },
   "usingComponents":{
     
