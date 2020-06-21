@@ -46,7 +46,6 @@
 	</view>
 	<!-- Add button -->
 	<button class="add-button" hover-class="add-button-hover" bindtap="addFile">+</button>
-
 	<!-- File more action actionSheet -->
 	<view wx:if="{{show_more_action}}" class="fadeIn" bindtap="cancelActionSheet">
 		<view class="weui-mask"></view>

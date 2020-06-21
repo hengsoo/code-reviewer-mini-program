@@ -23,7 +23,8 @@ Page({
     show_review_action_sheet: false,
     review_action_sheet_review_id : "",
     // Authorize getUserInfo
-    show_login_button : false
+    show_login_button : false,
+    show_search_input: false,
   },
 
   onLoad: function(options) {
@@ -231,6 +232,16 @@ Page({
       })
 
     })
+  },
+  launchSearchInput: function(event){
+    if (this.data.show_search_input == true){
+      this.setData({
+        show_search_input: false,
+      })
+    }
+    else{
+      this.setData({show_search_input: true})
+    }
   },
 
 })

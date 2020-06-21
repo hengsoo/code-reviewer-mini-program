@@ -87,3 +87,35 @@ image.review-info-avatar{
   margin: 10rpx 20rpx 10rpx 10rpx;
 }
 
+.search-button{
+  position: fixed;
+  right: 10rpx;
+  top: 10rpx;
+  margin-left: auto;
+  width: 60rpx !important;
+  height: 60rpx !important;
+  border-radius: 10rpx;
+  background: #522f94;
+  color: white;
+}
+
+.search-button-hover{
+  background: #663bb782;
+}
+
+.search_input {
+  height: 90rpx;
+  padding: 10rpx;
+  background-color: var(--themeColor);
+  }
+
+.search_input navigator {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 15rpx;
+  color: #666;
+  }
+
