@@ -1,2 +1,7 @@
 <!--components/search-input/search-input.wxml-->
-<input class="input-area"></input>
+<block class='search-input-area'>
+<input class="input-area" bindinput="onInputChange"></input>
+<button class='next-btn' hover-class="btn-hover" bindtap="searchNext">+</button>
+<button class='next-btn' style="width:20rpx" hover-class="btn-hover" bindtap="searchPre">-</button>
+</block>
+

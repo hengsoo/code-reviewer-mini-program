@@ -10,7 +10,7 @@
 <image class="search-button" src="../../images/code-view/seach_icon.png" hidden="{{show_announcement}}" hover-class="search-button-hover" bindtap="launchSearchInput"></image>
 <!--<button class="search-button" hidden="{{show_announcement}}" hover-class="search-button-hover" bindtap="search-string"><image src="../../images/code-view/seach_icon.png">
 </image></button>-->
-<search-input hidden="{{!show_search_input}}" />
+<search-input hidden="{{!show_search_input}}" bindstringChange="handleSearchNext"/>
 <view class="code-container">
 	<table>
 		<block  wx:for="{{code}}" wx:key="index">

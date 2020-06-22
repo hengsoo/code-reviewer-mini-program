@@ -1,8 +1,23 @@
 /* components/search-input/search-input.wxss */
+.search-input-area{
+}
+
 .input-area{
+  display: inline;
+  float: left;
   color: white;
   background-color: #663bb72c;
-  width: 580rpx !important;
+  width: 550rpx !important;
   height: 60rpx !important;
   top: 10rpx;
+}
+
+.next-btn{
+  display: inline;
+  background-color: #663bb72c;
+  height: 30rpx !important;
+}
+
+.btn-hover{
+  background: #4e2c8c2c;
 }

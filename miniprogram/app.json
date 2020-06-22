@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/demo/demo",
     "pages/code-view/code-view"
   ],
   "window": {

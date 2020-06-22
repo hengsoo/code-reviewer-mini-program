@@ -244,4 +244,16 @@ Page({
     }
   },
 
+  handleSearchNext: function(e){
+    console.log("search next")
+    let code = this.data.code
+    let string_to_search = e.detail
+    for(let i=0, len=code.length; i<len; i++){
+      if (code[i].search(string_to_search) != -1){
+        console.log(i+1)
+        break
+      }
+    }
+  }
+
 })
