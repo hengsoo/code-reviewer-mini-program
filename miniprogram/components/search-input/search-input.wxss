@@ -7,14 +7,14 @@
   float: left;
   color: white;
   background-color: #663bb72c;
-  width: 550rpx !important;
-  height: 60rpx !important;
+  /* width: 550rpx !important; */
+  height: 75rpx !important;
   top: 10rpx;
 }
 
 .next-btn{
   display: inline;
-  background-color: #663bb72c;
+  background-color: #b728bf58;
   height: 30rpx !important;
 }
 

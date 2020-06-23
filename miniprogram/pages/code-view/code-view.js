@@ -25,6 +25,7 @@ Page({
     // Authorize getUserInfo
     show_login_button : false,
     show_search_input: false,
+    top_index: 0,
   },
 
   onLoad: function(options) {
@@ -248,12 +249,25 @@ Page({
     console.log("search next")
     let code = this.data.code
     let string_to_search = e.detail
-    for(let i=0, len=code.length; i<len; i++){
+    for(let i=this.data.top_index, len=code.length; i<len; i++){
       if (code[i].search(string_to_search) != -1){
         console.log(i+1)
+        this.setData({
+          top_index: i+1
+        })
         break
       }
     }
+    var query = wx.createSelectorQuery().in(this)
+    query.selectViewport().scrollOffset()
+    var str = this.data.top_index.toString()
+    query.select("#"+str).boundingClientRect()
+    query.exec(function (res){
+      console.log(res)
+      var miss = res[0].scrollHeight
+      wx.pageScrollTo({
+        scrollTop: 0,
+      })
+    })
   }
-
 })
