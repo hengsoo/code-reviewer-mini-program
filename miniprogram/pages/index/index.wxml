@@ -10,7 +10,7 @@
 		link hover 
 		url="../code-view/code-view?file_id={{item.file_id}}&file_name={{ item.file_name }}">
 
-			<image class="cell-icon" src="../../images/index/language-{{item.language}}.png"></image>
+			<image class="cell-icon" src="../../images/index/language/language-{{item.language}}.png"></image>
 			<view class="list-card__info">
 				<view class="list-card__info-title font-black-34">{{item.file_name}}</view>
 			</view>
@@ -31,7 +31,7 @@
 		<navigator wx:for="{{menu}}" wx:key="file_id" class="list-card fill-width" link hover 
 		url="../code-view/code-view?file_id={{item.file_id}}&file_name={{ item.file_name }}">
 
-			<image class="cell-icon" src="../../images/index/language-{{item.language}}.png"></image>
+			<image class="cell-icon" src="../../images/index/language/language-{{item.language}}.png"></image>
 
 			<view class="list-card__info">
 				<view class="list-card__info-title font-black-34">{{item.file_name}}</view>
@@ -44,8 +44,12 @@
 
 		</navigator>
 	</view>
+	
 	<!-- Add button -->
-	<button class="add-button" hover-class="add-button-hover" bindtap="addFile">+</button>
+	<view class="add-button" hover-class="add-button-hover" bindtap="addFile">
+		<image class="button-icon" src="../../images/index/icon_file_import.png"></image>
+		<text class="button-text">导入代码文件</text>
+	</view>
 
 	<!-- File more action actionSheet -->
 	<view wx:if="{{show_more_action}}" class="fadeIn" bindtap="cancelActionSheet">
