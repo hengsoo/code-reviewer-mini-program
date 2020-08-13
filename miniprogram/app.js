@@ -8,7 +8,7 @@ App({
     
     else {
       wx.cloud.init({
-        env: 'code-reviewer',
+        env: 'cloud-test',
         traceUser: true,
       })
     }
