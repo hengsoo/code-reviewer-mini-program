@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/guide/guide",
     "pages/index/index",
+    "pages/guide/guide",
     "pages/code-view/code-view"
   ],
   "window": {
