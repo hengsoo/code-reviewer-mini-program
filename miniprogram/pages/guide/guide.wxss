@@ -16,9 +16,16 @@ swiper {
 .button-img {
   /*这个是绝对布局*/
   position: relative;
-  bottom: 115px;
+  bottom: 326rpx;
   height: 40px;
   width: 120px;
   opacity: 0.6;
   background-color: rgba(95, 197, 238, 0.7);
+}
+
+checkbox {
+  position: relative;
+  bottom: 350rpx;
+  left: 242rpx;
+  font-size: 12px;
 }

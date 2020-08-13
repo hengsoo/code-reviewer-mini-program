@@ -9,22 +9,24 @@ Page({
     current_menu_index: 0,
   },
 
-  onLoad: function () {
-    wx.getStorage({
-      key: 'isFirst',
-      success(res){
-        if (res.data){
+  onLoad: function (e) {
+    if (e.fromPage !== "guide") {
+      wx.getStorage({
+        key: 'isFirst',
+        success(res){
+          if (res.data){
+            wx.navigateTo({
+              url: '../guide/guide',
+            })
+          }
+        },
+        fail: error => {
           wx.navigateTo({
             url: '../guide/guide',
           })
         }
-      },
-      fail: error => {
-        wx.navigateTo({
-          url: '../guide/guide',
-        })
-      }
-    });
+      });
+    }
   },
 
   onShow: function () {
@@ -188,6 +190,12 @@ Page({
       fail: error => {
         console.error("Choose file failed:", error)
       }
+    })
+  },
+
+  linkToGuide: function () {
+    wx.navigateTo({
+      url: '../guide/guide',
     })
   },
 

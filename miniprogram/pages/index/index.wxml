@@ -51,6 +51,8 @@
 		<text class="button-text">导入代码文件</text>
 	</view>
 
+	<view class="guide-button" hover-class="guide-button-hover" bindtap="linkToGuide">?</view>
+
 	<!-- File more action actionSheet -->
 	<view wx:if="{{show_more_action}}" class="fadeIn" bindtap="cancelActionSheet">
 		<view class="weui-mask"></view>

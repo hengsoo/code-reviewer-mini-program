@@ -3,6 +3,7 @@
   <block wx:for="{{imgs}}" wx:for-index="index">
     <swiper-item class="swiper-items">
       <image class="swiper-image" src="{{item}}"></image>
+      <checkbox checked="true" bindtap="checkboxChange" wx:if="{{index == imgs.length - 1}}">下次不再显示</checkbox>
       <button class="button-img" bindtap="onBtnSkip" wx:if="{{index == imgs.length - 1}}">立即体验</button>
     </swiper-item>
   </block>

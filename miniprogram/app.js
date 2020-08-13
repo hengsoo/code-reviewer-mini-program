@@ -26,7 +26,6 @@ App({
     }
     
     this.setOpenID()
-
   },
 
   setOpenID: function() {

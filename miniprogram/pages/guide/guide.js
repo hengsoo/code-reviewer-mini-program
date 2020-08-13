@@ -10,6 +10,7 @@ Page({
       "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=361062454,92445662&fm=26&gp=0.jpg",
       "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1597311983159&di=596a263ec14d82ae7a2a15645bf9ac41&imgtype=0&src=http%3A%2F%2Fpic1.16pic.com%2F00%2F56%2F35%2F16pic_5635353_b.jpg",
     ],
+    isFirst: false,
 
     img: "http://img.kaiyanapp.com/7ff70fb62f596267ea863e1acb4fa484.jpeg",
   },
@@ -17,11 +18,24 @@ Page({
   onBtnSkip() {
     wx.setStorage({
       key: 'isFirst',
-      data: false,
+      data: this.data.isFirst,
     })
     wx.navigateTo({
-      url: '../index/index',
+      url: '../index/index?fromPage=guide',
     })
+  },
+
+  checkboxChange(e) {
+    if (this.data.isFirst){
+      this.setData({
+        isFirst: false
+      })
+    }
+    else{
+      this.setData({
+        isFirst: true
+      })
+    }
   },
   
   /**
