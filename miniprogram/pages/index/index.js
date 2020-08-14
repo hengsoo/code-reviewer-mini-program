@@ -1,8 +1,7 @@
 //index.js
-const app = getApp()
-
 Page({
   data: {
+    is_guide: true,
     menu: [],
     recent_menu: [],
     show_more_action: false,
@@ -11,7 +10,7 @@ Page({
 
   onLoad: function (e) {
     if (e.fromPage !== "guide") {
-      wx.getStorage({
+      /*wx.getStorage({
         key: 'isFirst',
         success(res){
           if (res.data){
@@ -25,7 +24,21 @@ Page({
             url: '../guide/guide',
           })
         }
-      });
+      });*/
+      wx.cloud.callFunction({
+        name: 'getUserSetting',
+        data: {},
+        success: res => {
+          if (res.result.data.is_guide){
+            wx.navigateTo({
+              url: '../guide/guide',
+            })
+          }
+        },
+        fail: error => {
+          console.log('cloud getUserSetting failed!')
+        }
+      })
     }
   },
 
