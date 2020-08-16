@@ -1,41 +1,39 @@
-// pages/guide/guide.js
-Page({
+// guide.js
+const app = getApp();
 
-  /**
-   * page's initial data
-   */
+Page({
   data: {
-    imgs: [
+    images: [
       "../../images/guide/guide_1.jpg",
       "../../images/guide/guide_2.jpg",
       "../../images/guide/guide_3.jpg",
       "../../images/guide/guide_4.jpg",
     ],
+    // Default value will be false
     display_guide_on_launch: false,
-
-    img: "http://img.kaiyanapp.com/7ff70fb62f596267ea863e1acb4fa484.jpeg",
   },
 
-  onBtnSkip() {
-    wx.cloud.callFunction({
+  onUnload(){
+     // Update user settings
+     wx.cloud.callFunction({
       name: 'setUserSettings',
-      data: { display_guide_on_launch: this.data.display_guide_on_launch },
+      data: {
+        display_guide_on_launch: this.data.display_guide_on_launch
+      },
     })
+    // Update local settings
+    app.globalData.settings.display_guide_on_launch = this.data.display_guide_on_launch;
+  },
+
+  onRedirectToHomePage() {
     wx.navigateTo({
-      url: '../index/index?fromPage=guide',
+      url: '../index/index',
     })
   },
 
   checkboxChange(event) {
-    if (this.data.display_guide_on_launch){
-      this.setData({
-        display_guide_on_launch: false
-      })
-    }
-    else{
-      this.setData({
-        display_guide_on_launch: true
-      })
-    }
+    this.setData({
+      display_guide_on_launch: !this.data.display_guide_on_launch,
+    })
   },
 })

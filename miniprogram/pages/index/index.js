@@ -8,25 +8,6 @@ Page({
     current_menu_index: 0,
   },
 
-  onLoad: function (event) {
-    if (event.fromPage !== "guide") {
-      wx.cloud.callFunction({
-        name: 'getUserSettings',
-        data: {},
-        success: res => {
-          if (res.result.data.display_guide_on_launch){
-            wx.navigateTo({
-              url: '../guide/guide',
-            })
-          }
-        },
-        fail: error => {
-          console.log('cloud getUserSetting failed!')
-        }
-      })
-    }
-  },
-
   onShow: function () {
     this.getUserMenu()
   },
@@ -81,8 +62,8 @@ Page({
     })
   },
 
-  onShareAppMessage: function (e) {
-    if (e.from == 'button') {
+  onShareAppMessage: function (event) {
+    if (event.from == 'button') {
       const current_menu_index = this.data.current_menu_index;
       return {
         title: '分享代码 ' + this.data.menu[current_menu_index].file_name,
@@ -91,7 +72,6 @@ Page({
       }
     }
     else{
-      // e.from == 'menu'
       return {
         title: '代码阅读器',
         path: 'pages/index/index',
