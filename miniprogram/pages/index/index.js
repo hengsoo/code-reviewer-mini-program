@@ -1,11 +1,13 @@
 //index.js
+const app = getApp();
+
 Page({
   data: {
     is_guide: true,
     menu: [],
     recent_menu: [],
     show_more_action: false,
-    current_menu_index: 0,
+    selected_menu_index: 0,
   },
 
   onShow: function () {
@@ -20,16 +22,16 @@ Page({
       success: res => {
         this.updateUserMenu(res.result.data.menu)
         this.updateUserRecentMenu(res.result.data.recent_menu)
-        console.log("user menu updated")
       },
       fail: error => {
-        console.log('Get user menu FAILED: ', error)
+        console.error('[CLOUD] [getUserMenu] FAILED:', error)
       }
     })
   },
 
+  // Refresh local menu
   updateUserMenu: function (new_menu) {
-    // Set latest file at top
+    // Sort files by latest
     new_menu = new_menu.reverse()
 
     if (new_menu) {
@@ -39,39 +41,44 @@ Page({
     }
   },
 
-  updateUserRecentMenu: function(new_recent_menu) {
+  // Refresh local recent menu
+  updateUserRecentMenu: function (new_recent_menu) {
+    // Sort files by latest
     new_recent_menu = new_recent_menu.reverse()
-    
-    if (new_recent_menu){
+
+    if (new_recent_menu) {
       this.setData({
         recent_menu: new_recent_menu
       })
     }
   },
 
-  moreAction: function (e) {
+  // When more action menu is launched
+  moreAction: function (event) {
     this.setData({
       show_more_action: true,
-      current_menu_index: e.currentTarget.dataset.operation,
+      selected_menu_index: event.currentTarget.dataset.operation,
     })
   },
 
-  cancelActionSheet: function () {
+  cancelMoreAction: function () {
     this.setData({
       show_more_action: false,
     })
   },
 
   onShareAppMessage: function (event) {
+    // If item is shared via action menu of file
     if (event.from == 'button') {
-      const current_menu_index = this.data.current_menu_index;
+      const selected_menu_index = this.data.selected_menu_index;
       return {
-        title: '分享代码 ' + this.data.menu[current_menu_index].file_name,
-        path: 'pages/code-view/code-view?file_id=' + this.data.menu[current_menu_index].file_id
-         + '&file_name=' + this.data.menu[current_menu_index].file_name,
+        title: '分享代码 ' + this.data.menu[selected_menu_index].file_name,
+        path: 'pages/code-view/code-view?file_id=' + this.data.menu[selected_menu_index].file_id +
+          '&file_name=' + this.data.menu[selected_menu_index].file_name,
       }
     }
-    else{
+    // Share App
+    else {
       return {
         title: '代码阅读器',
         path: 'pages/index/index',
@@ -84,24 +91,25 @@ Page({
 
   deleteFile: function () {
     // Show loading
-    wx.showLoading({ title: '文件删除中'})
+    wx.showLoading({
+      title: '文件删除中'
+    })
 
     wx.cloud.callFunction({
       name: 'deleteFile',
       data: {
-        file_id: this.data.menu[this.data.current_menu_index].file_id,
+        file_id: this.data.menu[this.data.selected_menu_index].file_id,
       },
 
       success: res => {
-        console.log(res);
-        this.updateUserMenu(res.result.data.menu);
+        this.updateUserMenu(res.result.data.menu)
         wx.hideLoading()
         this.showSuccessToast("删除成功")
       },
 
       fail: error => {
         this.showErrorToast("文件删除失败")
-        console.log('Cloud deleteFile failed', error)
+        console.error('[CLOUD] [deleteFile] FAILED:', error)
       },
     })
   },
@@ -119,21 +127,22 @@ Page({
         // Filter file extension
         const file_extension = input_file_name.split(".").pop()
         // Check if file extension is forbidden
-        if (app.globalData.forbidden_file_extensions.includes(file_extension)){
+        if (app.globalData.forbidden_file_extensions.includes(file_extension)) {
           this.showErrorToast("文件格式错误")
           throw Error('Invalid input file extension.')
         }
 
         // Show loading
-        wx.showLoading({ title: '文件上传中'})
-          
+        wx.showLoading({
+          title: '文件上传中'
+        })
+
         // Read file 
         wx.getFileSystemManager().readFile({
-            filePath: res.tempFiles[0].path,
-            encoding: 'utf-8',
+          filePath: res.tempFiles[0].path,
+          encoding: 'utf-8',
 
           success: res => {
-            console.log(res)
             input_file_content = res.data
             // Call cloud function addFile
             wx.cloud.callFunction({
@@ -145,52 +154,50 @@ Page({
               success: res => {
                 wx.hideLoading()
                 this.showSuccessToast("上传成功")
-                console.log(res)
                 this.updateUserMenu(res.result.data.menu)
-                console.log("Add file user menu updated")
               },
               fail: error => {
                 wx.hideLoading()
                 this.showErrorToast("上传失败")
-                console.error('Cloud addFile failed: ', error)
+                console.error('[CLOUD] [addFile] FAILED: ', error)
               }
             })
           },
           // Read file failed
           fali: error => {
             this.showErrorToast("文件阅读失败")
-            console.error("Read file failed: ", error)
+            console.error('[LOCAL] [readFile] FAILED: ', error)
           }
         })
       },
 
       // Choose file failed
       fail: error => {
-        console.error("Choose file failed:", error)
+        console.error("[LOCAL] [chooseFile] FAILED: ", error)
       }
     })
   },
 
   redirectToGuide: function () {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../guide/guide',
     })
   },
 
-  showSuccessToast: function (title){
+  showSuccessToast: function (title) {
     wx.showToast({
       title: title,
-      icon:'success',
+      icon: 'success',
       duration: 1500
     })
   },
 
-  showErrorToast: function (title){
+  showErrorToast: function (title) {
     wx.showToast({
       title: title,
       image: '../../images/index/icon_error.png',
       duration: 2000
     })
   }
-  
+
 })

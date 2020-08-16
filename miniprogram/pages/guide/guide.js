@@ -1,5 +1,5 @@
 // guide.js
-const app = getApp();
+const app = getApp()
 
 Page({
   data: {
@@ -13,6 +13,7 @@ Page({
     display_guide_on_launch: false,
   },
 
+  // When page closes
   onUnload(){
      // Update user settings
      wx.cloud.callFunction({

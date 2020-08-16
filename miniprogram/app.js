@@ -28,6 +28,7 @@ App({
     this.getOpenID();
 
     this.getUserSettings().then(
+      // Decides if needs to redirect to guide page
       (result) => {
         if (result.display_guide_on_launch) {
           wx.navigateTo({
@@ -44,7 +45,6 @@ App({
       name: 'getOpenID',
       data: {},
       success: res => {
-        console.log('user openid: ', res.result.openid)
         this.globalData.openid = res.result.openid
       },
       fail: error => {
