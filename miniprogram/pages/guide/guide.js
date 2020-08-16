@@ -22,11 +22,11 @@ Page({
       },
     })
     // Update local settings
-    app.globalData.settings.display_guide_on_launch = this.data.display_guide_on_launch;
+    app.globalData.user_settings.display_guide_on_launch = this.data.display_guide_on_launch;
   },
 
   onRedirectToHomePage() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../index/index',
     })
   },
