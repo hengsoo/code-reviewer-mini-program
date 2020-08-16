@@ -8,7 +8,7 @@
 			  下次不再显示
 			</checkbox>
 
-			<button class="button-img" bindtap="onRedirectToHomePage" wx:if="{{index == images.length - 1}}">
+			<button class="redirect-button" bindtap="onRedirectToHomePage" wx:if="{{index == images.length - 1}}">
 				立即体验
 			</button>
 
