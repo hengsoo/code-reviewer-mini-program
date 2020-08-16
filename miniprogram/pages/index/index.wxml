@@ -46,12 +46,14 @@
 	</view>
 	
 	<!-- Add button -->
-	<view class="add-button" hover-class="add-button-hover" bindtap="addFile">
+	<view class="add-button" hover-class="button-hover" bindtap="addFile">
 		<image class="button-icon" src="../../images/index/icon_file_import.png"></image>
 		<text class="button-text">导入代码文件</text>
 	</view>
 
-	<view class="guide-button" hover-class="guide-button-hover" bindtap="linkToGuide">?</view>
+	<!-- Help button -->
+	<image class="help-button" bindtap="redirectToGuide"  
+	src="../../images/index/icon_help.png"></image>
 
 	<!-- File more action actionSheet -->
 	<view wx:if="{{show_more_action}}" class="fadeIn" bindtap="cancelActionSheet">

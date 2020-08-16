@@ -171,7 +171,7 @@ Page({
     })
   },
 
-  linkToGuide: function () {
+  redirectToGuide: function () {
     wx.navigateTo({
       url: '../guide/guide',
     })
