@@ -1,6 +1,6 @@
-const app = getApp()
-
 // TODO: remove item from usermenu and recent menu if file doesn't exixts
+
+const app = getApp()
 
 Page({
   data: {
@@ -35,9 +35,10 @@ Page({
     wx.setNavigationBarTitle({
       title: this.data.file_name
     })
-    // call cloud funcion in order
+
+    // Update user recent menu after displaying code
     this.displayCodeAndReviews().then(result=>{
-      this.updataUserRecentMenu();
+      this.updataUserRecentMenu()
     })
   },
 
@@ -57,7 +58,6 @@ Page({
   },
 
   displayCodeAndReviews: function() {
-    console.log('Getting program file: ');
     return new Promise( (resolve, reject) => {
       wx.cloud.callFunction({
         name: 'getProgramFile',
@@ -75,10 +75,10 @@ Page({
             })
           }
           
-          const program_file_openid = res.result.data._openid;
-          const program_file_code = res.result.data.code;
-          const program_file_reviews = res.result.data.reviews;
-          const program_language = res.result.data.language;
+          const program_file_openid = res.result.data._openid
+          const program_file_code = res.result.data.code
+          const program_file_reviews = res.result.data.reviews
+          const program_language = res.result.data.language
 
           this.setData({
             file_openid: program_file_openid,
@@ -90,7 +90,7 @@ Page({
         },
         // Get programFile failed
         fail: error =>{
-          return reject('Cloud getProgramFile failed', error)
+          return reject('[CLOUD] [getProgramFile] FAILED:', error)
         }
       }) 
     })
@@ -108,7 +108,7 @@ Page({
           language: this.data.language,
         },
         fail: error => {
-          console.error('cloud updataUserRecentMenu failed', error);
+          console.error('[CLOUD] [updateUserRecentMenu] FAILED:', error)
         }
       })
       
@@ -138,7 +138,6 @@ Page({
 
   showReviewInput(event){
     const line_number = event.currentTarget.id
-    console.log("Long pressed line ", line_number)
     this.setData({
       show_review_input:true,
       review_input_line_number: line_number
@@ -146,7 +145,6 @@ Page({
   },
 
   updateReviews(event){
-    console.log(event)
     const new_reviews = event.detail.reviews
     this.setData({
       reviews: new_reviews
@@ -196,7 +194,7 @@ Page({
         },
         // Delete fail
         fail: error => {
-          console.error("Delete review failed: ", error)
+          console.error("[CLOUD] [deleteReview] FAILED:", error)
         }
       })
 
@@ -222,7 +220,7 @@ Page({
           return resolve()
         },
         fail: error =>{
-          console.error("getUserInfo failed: ", error)
+          console.error("[LOCAL] [getUserInfo] FAILED:", error)
           this.setData({
             show_login_button: true
           })

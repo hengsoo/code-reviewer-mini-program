@@ -1,0 +1,30 @@
+/* pages/guide/guide.wxss */
+swiper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.swiper-image {
+  height: 100%;
+  width: 100%;
+}
+
+.redirect-button {
+  position: relative;
+  bottom: 264rpx;
+  height: 40px;
+  width: 120px;
+  background-color: #08C165;
+  color: white;
+  letter-spacing: 3px;
+}
+
+checkbox {
+  position: relative;
+  bottom: 285rpx;
+  left: 242rpx;
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: white;
+}

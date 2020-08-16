@@ -99,7 +99,7 @@ page {
               0 8px 8px rgba(0,0,0,0.15);
 }
 
-.add-button-hover{
+.button-hover{
   background: #663bb782;
 }
 
@@ -116,7 +116,17 @@ page {
   letter-spacing: 3rpx;
 }
 
-/* use in action sheet animation */
+.help-button{
+  padding: 3px;
+  opacity: 0.5;
+  position: fixed;
+  bottom: 60rpx;
+  left: 50rpx;
+  width: 70rpx;
+  height: 70rpx;
+}
+
+/* Action sheet animation */
 .fadeIn {
   -webkit-animation: c .3s forwards;
   animation: c .3s forwards;
@@ -144,8 +154,6 @@ page {
     opacity: 0
   }
 }
-
-
 
 .menu-title{
   margin-top: 20rpx;

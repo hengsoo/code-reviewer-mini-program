@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/guide/guide",
     "pages/code-view/code-view"
   ],
   "window": {

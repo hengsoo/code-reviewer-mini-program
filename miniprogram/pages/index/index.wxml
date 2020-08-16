@@ -46,19 +46,23 @@
 	</view>
 	
 	<!-- Add button -->
-	<view class="add-button" hover-class="add-button-hover" bindtap="addFile">
+	<view class="add-button" hover-class="button-hover" bindtap="addFile">
 		<image class="button-icon" src="../../images/index/icon_file_import.png"></image>
 		<text class="button-text">导入代码文件</text>
 	</view>
 
+	<!-- Help button -->
+	<image class="help-button" bindtap="redirectToGuide"  
+	src="../../images/index/icon_help.png"></image>
+
 	<!-- File more action actionSheet -->
-	<view wx:if="{{show_more_action}}" class="fadeIn" bindtap="cancelActionSheet">
+	<view wx:if="{{show_more_action}}" class="fadeIn" bindtap="cancelMoreAction">
 		<view class="weui-mask"></view>
 
 		<view class="weui-actionsheet weui-actionsheet_toggle">
 
 			<view class="weui-actionsheet__title">
-				<view class="weui-actionsheet__title-text">{{menu[current_menu_index].file_name}}</view>
+				<view class="weui-actionsheet__title-text">{{menu[selected_menu_index].file_name}}</view>
 			</view>
 
 			<view class="weui-actionsheet__menu">
