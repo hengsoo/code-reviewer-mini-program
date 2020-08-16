@@ -1,6 +1,5 @@
 /* pages/guide/guide.wxss */
 swiper {
-  /*这个是绝对布局*/
   position: absolute;
   height: 100%;
   width: 100%;
@@ -9,14 +8,12 @@ swiper {
 .swiper-image {
   height: 100%;
   width: 100%;
-  /*透明度*/
   opacity: 0.9;
 }
 
 .button-img {
-  /*这个是绝对布局*/
   position: relative;
-  bottom: 326rpx;
+  bottom: 264rpx;
   height: 40px;
   width: 120px;
   opacity: 0.6;
@@ -25,7 +22,7 @@ swiper {
 
 checkbox {
   position: relative;
-  bottom: 350rpx;
+  bottom: 285rpx;
   left: 242rpx;
   font-size: 12px;
 }

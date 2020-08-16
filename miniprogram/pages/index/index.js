@@ -8,28 +8,13 @@ Page({
     current_menu_index: 0,
   },
 
-  onLoad: function (e) {
-    if (e.fromPage !== "guide") {
-      /*wx.getStorage({
-        key: 'isFirst',
-        success(res){
-          if (res.data){
-            wx.navigateTo({
-              url: '../guide/guide',
-            })
-          }
-        },
-        fail: error => {
-          wx.navigateTo({
-            url: '../guide/guide',
-          })
-        }
-      });*/
+  onLoad: function (event) {
+    if (event.fromPage !== "guide") {
       wx.cloud.callFunction({
-        name: 'getUserSetting',
+        name: 'getUserSettings',
         data: {},
         success: res => {
-          if (res.result.data.is_guide){
+          if (res.result.data.display_guide_on_launch){
             wx.navigateTo({
               url: '../guide/guide',
             })

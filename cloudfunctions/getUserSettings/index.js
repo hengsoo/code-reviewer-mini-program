@@ -7,13 +7,12 @@ cloud.init({
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  const wxContext = cloud.getWXContext()
   const user_openid = cloud.getWXContext().OPENID
   const db = cloud.database()
-  let setting = {}
+  let settings = {}
 
   try {
-    setting = await db.collection('user-settings').doc( user_openid).get()
+    settings = await db.collection('user-settings').doc( user_openid).get()
     console.log(`User setting found.`)
   }
   // if setting not found
@@ -22,11 +21,11 @@ exports.main = async (event, context) => {
     await db.collection('user-settings').add({
       data:{
         _id: user_openid,
-        is_guide: false,
+        display_guide_on_launch: true,
       }
     })
-    setting = await db.collection('user-settings').doc( user_openid).get()
+    settings = await db.collection('user-settings').doc( user_openid).get()
   }
 
-  return setting
+  return settings
 }
